@@ -5,7 +5,8 @@ Complete the function below by Python which can calculate the average price of a
 
 ```python
 def avg(data): 
- # your code here 
+    # your code here
+
 print( 
     avg({ 
         "products": [ 

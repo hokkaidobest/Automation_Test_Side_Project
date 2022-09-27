@@ -1,25 +1,38 @@
-# Week 1 Part 1
+# Week 4 Part 1
 
-## Assignment 1: Multi-thread (Python) 
+## Assignment 1: Python Requests
 
-Today, we want to finish some jobs in multi-thread and you can see the sample code below.  The main function executes the do_job function 5 times and in each time it takes 3 seconds to  finish the job. So it will take 15 seconds to finish all the jobs and that is very inefficient. We  want to finish all the jobs in around 3 seconds in total, try to rewrite the main function to  achieve the goal and keep other functions untouched. 
+According to the [API Documents](https://fakerestapi.azurewebsites.net/index.html), please write a python script to make the API call to get all the activities, and 
+Using Assertion to verify that the response status code is 200
 
-```python
-import threading 
-from time import sleep 
+List out all the activity ids which are not completed.
 
-def do_job(number): 
-   sleep(3) 
-   print(f"Job {number} finished") 
+## Assignment 2: Python Requests - Cookies, Sessions
 
-# rewrite everything inside this main function and keep others untouched 
-def main(): 
-   for i in range(5): 
-       do_job(i) 
+Write a python script to book a room on the website (https://automationintesting.online/). Please follow the below instructions:
 
-main()
+1. Login to get a token by doing a POST call against the auth API at https://automationintesting.online/auth/login. The request body should be like that:
+```json
+{
+  "username": "admin",
+  "password": "password"
+}
 ```
-
-
-Reminder:  
-1. You don’t need to take care about the order of job execution, just make sure all jobs are  executed and finished.
+2. Get a list of rooms by doing a GET call against the getting rooms API at https://automationintesting.online/room/. 
+Extract the room ID of the first room.
+3. Make a booking for the room by doing a POST call against the booking API at https://automationintesting.online/booking. It also requested to send your token as a cookie. The request body should be like that: (Change the data as you like)
+```json
+{
+  "bookingdates": {
+    "checkin": string with datetime format (YYYY-MM-HHThh:mm:ss.fZ),
+    "checkout": string with datetime format (YYYY-MM-HHThh:mm:ss.fZ),
+  },
+  "depositpaid": boolean,
+  "firstname": string
+  "lastname": string
+  "roomid": string
+  "totalprice": integer
+}
+```
+4. Verify that your booking is successful by checking the response status code.
+5. Assert the response booking information is correct.

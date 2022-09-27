@@ -1,4 +1,4 @@
-# Week 1 Part 5
+# Week 7 Part 1
 
 ## Assignment: Testing for Create Product Feature
 It is required to launch new products to website. We developed an [admin page](http://54.201.140.239/admin/products.html ) to create product.

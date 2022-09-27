@@ -1,26 +1,30 @@
-# Week 2 Part 1
+# Week 6 Part 1
 
 ## Assignment
-You have completed Stylish Web UI Automation Testing Script. Automated Tests should start without any human intervention.
-A CI/CD platform can configure tests to run automatically.
+You are going to test login and logout feature. You should understand the login flow first.
+
+Create a new test file "test_web_login.py", and write automation script for the below scenario.
+
+### Feature: Login and Logout
+#### Scenario: Login and Logout Success
+- **When** member login with correct email and password
+- **Then** login success and there is jwt token in local storage
+- **When** member logout
+- **Then** logout success
+
+#### Scenario: Login Failed with incorrect email or password
+- **When** member login with incorrect email / password
+- **Then** login failed with error message
+
+#### Scenario: Login with invalid access token
+- **Given** member login with correct email and password
+- **And** login success and copy the jwt token
+- **And** member logout
+- **And** logout success
+- **When** using the jwt token to access member page
+- **Then** error message "Invalid Token"
 
 ---
-### Part 1: Install Jenkins, Create Automation Test Job
-1. Try to install Jenkins
-2. Create a Job called "Stylish - Web UI Automation Test"
-3. The source code of the job should connect with GitHub
-4. Setup environment variable in the job. Use secret text(s) or files(s) for sensitive information.
-5. Write a shell script command for building the project.
-
-### Part 2: Generate Allure Report
-Generate Allure Report in post build action.
-
-### Part 3: Notification by Discord
-1. You should create a channel in discord and make a webhooks.
-2. Setup discord notification in the Job.
-
-### Part 4: Scheduling
-Make a schedule to run daily.
-
-### Part 5: Rerun Failed Test Cases
-Configure a Jenkins automated test execution job so that it can automatically re-runs the failed tests in Jenkins.
+### Requirements:
+- Using PyTest **Fixture** to write login function
+- Handle the secret key (email/password) by using Environment Variables and env files.

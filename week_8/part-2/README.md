@@ -1,4 +1,4 @@
-# Week 2 Part 3
+# Week 8 Part 2
 
 ## Assignment
 According to [Stylish API Document](https://app.swaggerhub.com/apis-docs/YINGNTY/Stylish/1.0.0). You should to write API Automation Test for following APIs:  

@@ -51,22 +51,49 @@ Please find the **assignment branch** on your `forked repository` and make a pul
 ### Sync Develop Branch
 - If your pull request is merged, you should update local `develop` branch by pulling from remote `[your_name]-develop` branch.
 
+
+## Assignment 2 - Python Basic
+Your job is to complete the following function
+
+- check_bmi(): calculate the BMI value  ( BMI = Weight(kg) / $height^2$ (m) )，return True if BMI between 18.5 and 24. Otherwise, return False
+```python
+def check_bmi(height, weight):
+    # your code here
+
+print(check_bmi(1.6, 60))   # print True
+print(check_bmi(1.6, 40))   # print False
+print(check_bmi(1.6, 100))  # print False
+```
+
+
 ## Assignment 2 - Python Basic
 Your job is to complete the following two functions. 
 1. find_max(): find the max value of an array of numbers.
-2. find_posiition(): find the first position of the target number inside an array of numbers. The position should be counted starting from 0, if you can't find the target, please return -1.
+2. find_position(): find the first position of the target number inside an array of numbers. The position should be counted starting from 0, if you can't find the target, please return -1.
 * Reminder: you cannot use those built-in functions like max() and index() to complete this  assignment, please implement it by yourself. 
 
 ```python
 def find_max(numbers): 
- 	# your code here 
+    # your code here
+
 def find_position(numbers, target): 
     # your code here 
 
-print(find_max([1, 2, 4, 5]) ); 	    # should print 5 
-print(find_max([5, 2, 7, 1, 6]) );          # should print 7 
+print(find_max([1, 2, 4, 5]) ) 	            # should print 5 
+print(find_max([5, 2, 7, 1, 6]) )           # should print 7 
 print(find_position([5, 2, 7, 1, 6], 5))    # should print 0 
 print(find_position([5, 2, 7, 1, 6], 7))    # should print 2 
 print(find_position([5, 2, 7, 7, 7, 1, 6], 7))  # should print 2 (the first one) print(find_position([5, 2, 7, 1, 6], 8)) # should print -1
 ```
 
+## Assignment 3: Algorithm Practice (Advanced Optional) 
+We created a function in Assignment 3 which can find the position of the target number  inside an array of numbers. Actually, if the array was Sorted already, there is a beautiful  algorithm called **Binary Search** which can do this job efficiently. You can try to look up these keywords and learn the concept behind this algorithm and write the code by yourself. 
+For simplicity, you can assume that there are no duplicate numbers in the given array. It  could be a bit of a challenge if you haven’t learned any algorithm before.
+
+```python
+def binary_search_position(numbers, target): 
+    # your code here 
+
+print(binary_search_position([1, 2, 5, 6, 7], 1)) # should print 0 
+print(binary_search_position([1, 2, 5, 6, 7], 6)) # should print 3
+```

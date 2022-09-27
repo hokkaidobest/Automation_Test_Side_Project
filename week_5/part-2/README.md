@@ -1,4 +1,4 @@
-# Week 1 Part 2
+# Week 5 Part 2
 
 ## Assignment
 Create a new test file "test_web_product_page.py", and write automation script for the below scenario.

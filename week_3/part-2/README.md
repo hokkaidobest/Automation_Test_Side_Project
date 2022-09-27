@@ -1,38 +1,31 @@
-# Week 1 Part 2
+# Week 3 Part 2
 
-## Assignment 1: Python Requests
+## Assignment: Interacting with Web Elements (Selenium)
+Write a script to automate the below scenario in using Chrome browser.
 
-According to the [API Documents](https://fakerestapi.azurewebsites.net/index.html), please write a python script to make the API call to get all the activities, and 
-Using Assertion to verify that the response status code is 200
-
-List out all the activity ids which are not completed.
-
-## Assignment 2: Python Requests - Cookies, Sessions
-
-Write a python script to book a room on the website (https://automationintesting.online/). Please follow the below instructions:
-
-1. Login to get a token by doing a POST call against the auth API at https://automationintesting.online/auth/login. The request body should be like that:
-```json
-{
-  "username": "admin",
-  "password": "password"
-}
-```
-2. Get a list of rooms by doing a GET call against the getting rooms API at https://automationintesting.online/room/. 
-Extract the room ID of the first room.
-3. Make a booking for the room by doing a POST call against the booking API at https://automationintesting.online/booking. It also requested to send your token as a cookie. The request body should be like that: (Change the data as you like)
-```json
-{
-  "bookingdates": {
-    "checkin": string with datetime format (YYYY-MM-HHThh:mm:ss.fZ),
-    "checkout": string with datetime format (YYYY-MM-HHThh:mm:ss.fZ),
-  },
-  "depositpaid": boolean,
-  "firstname": string
-  "lastname": string
-  "roomid": string
-  "totalprice": integer
-}
-```
-4. Verify that your booking is successful by checking the response status code.
-5. Assert the response booking information is correct.
+In this Assignment, you should use a **Python Assert Statement** to verify the conditions.
+ 
+### Scenario:
+1. Open the Chrome browser
+2. Go to Demo Store (http://demostore.supersqa.com)
+3. Add “Album” to cart
+4. Change the quantity to 2 and update cart in Cart Page
+5. Verify that Subtotal is $30.00
+6. Click “Checkout” and Fill in the form as below:
+   * First Name: “First”
+   * Last Name: “Last” 
+   * Company: ABC Company 
+   * Country / Region: Taiwan 
+   * Street address:
+     * Address Line 1 
+     * Address Line 2
+   * Town / City: Taipei
+   * State / County: Taipei 
+   * Postcode / ZIP: 101 
+   * Phone: 0123456789 
+   * Email: abc@abc.com
+7. Create an account with password “1234QWERasdf!@#$” in Checkout Page
+8. Fill in Additional Information with “Thank you!” in Checkout Page
+9. Click Place Order
+10. Verify that “Invalid payment method” is displayed.
+11. Finally, Close the Browser
