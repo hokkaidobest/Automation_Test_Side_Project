@@ -1,14 +1,7 @@
 # Week 5 Part 1
 
 ## Assignment
-You are working on an e-commerce development project - Stylish.
-
-Project Manager (PM) provided a [system requirement](https://docs.google.com/document/d/1TBzeYw5d7_tCm2sOBFECJRcBPvrPXgTrOVaCms6o3AM/edit?usp=sharing).
-
-E-commerce development project - [Stylish](http://54.201.140.239/) is ready for testing now.
-
-As a SDET (Software Development Engineer in Test), you should write automation script for Testing.
-Let start to write automation script to execute Web UI Automation Testing.
+Let start to write automation script to execute Web UI Automation Testing for Stylish.
 
 ---
 ### Feature: Product Search

@@ -4,10 +4,9 @@
 1. Python
 2. Shell Script (Basic)
 
-## Environment and Framework
-1. Linux
-2. PyTest
-3. Selenium
+## Framework
+1. PyTest
+2. Selenium
 
 ## Software Automation Testing
 1. Functional Testing for API & Web UI

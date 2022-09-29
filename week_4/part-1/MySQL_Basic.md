@@ -1,4 +1,4 @@
-# Week 4 Part 2
+# Week 4 Part 1
 
 ## Assignment 3: Using MySQL in Python
 

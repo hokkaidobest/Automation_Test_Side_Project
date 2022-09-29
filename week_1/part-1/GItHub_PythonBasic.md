@@ -18,7 +18,7 @@ From now on, we're going to start the project `stylish_automation_test`.
 5. Create a `develop` branch from `master` branch in your local machine.
 6. Change your current branch from `master` to `develop` in your local machine.
 
-## Assignment 1 - Using GitHub
+## Assignment 1: Using GitHub
 
 Every time before you start a new assignment, please create a new **assignment branch** from the **develop** branch with the following rules and complete the assignment on that branch.
 
@@ -51,11 +51,13 @@ Please find the **assignment branch** on your `forked repository` and make a pul
 ### Sync Develop Branch
 - If your pull request is merged, you should update local `develop` branch by pulling from remote `[your_name]-develop` branch.
 
-
-## Assignment 2 - Python Basic
+## Assignment 2: Python Basic - BMI Calculator
 Your job is to complete the following function
 
-- check_bmi(): calculate the BMI value  ( BMI = Weight(kg) / $height^2$ (m) )，return True if BMI between 18.5 and 24. Otherwise, return False
+- check_bmi(): calculate the BMI value, and return True if BMI between 18.5 and 24. Otherwise, return False 
+
+Formula: BMI = Weight(kg) / height<sup>2</sup> (m)
+
 ```python
 def check_bmi(height, weight):
     # your code here
@@ -66,7 +68,7 @@ print(check_bmi(1.6, 100))  # print False
 ```
 
 
-## Assignment 2 - Python Basic
+## Assignment 3: Python Basic - Find Maximum and Position
 Your job is to complete the following two functions. 
 1. find_max(): find the max value of an array of numbers.
 2. find_position(): find the first position of the target number inside an array of numbers. The position should be counted starting from 0, if you can't find the target, please return -1.
@@ -86,14 +88,17 @@ print(find_position([5, 2, 7, 1, 6], 7))    # should print 2
 print(find_position([5, 2, 7, 7, 7, 1, 6], 7))  # should print 2 (the first one) print(find_position([5, 2, 7, 1, 6], 8)) # should print -1
 ```
 
-## Assignment 3: Algorithm Practice (Advanced Optional) 
-We created a function in Assignment 3 which can find the position of the target number  inside an array of numbers. Actually, if the array was Sorted already, there is a beautiful  algorithm called **Binary Search** which can do this job efficiently. You can try to look up these keywords and learn the concept behind this algorithm and write the code by yourself. 
-For simplicity, you can assume that there are no duplicate numbers in the given array. It  could be a bit of a challenge if you haven’t learned any algorithm before.
+## Assignment 4: Python Basic - Sum of Factorials  (Advanced Optional) 
+
+Write a script to find the sum of factorials. (I.e. 1! + 2! + 3! … = ?)  
 
 ```python
-def binary_search_position(numbers, target): 
+def find_sum_of_factorials(numbers): 
     # your code here 
 
-print(binary_search_position([1, 2, 5, 6, 7], 1)) # should print 0 
-print(binary_search_position([1, 2, 5, 6, 7], 6)) # should print 3
+print(find_sum_of_factorials(3))  # = 1! + 2! + 3!, =  1 + 1 x 2 + 1 x 2 x 3,  should print 9
+print(find_sum_of_factorials(1))  # should print 1
+print(find_sum_of_factorials(5))  # should print 153
 ```
+
+* Reminder: you cannot use those built-in functions like factorial() to complete this  assignment, please implement it by yourself.
