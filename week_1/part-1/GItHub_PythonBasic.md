@@ -1,11 +1,11 @@
 # Week 1 Part 1
 
-## Learning Git, GitHub & Python Basic
+## Online Learning Material
 
 * [GitHub Training & Guides](https://www.youtube.com/watch?v=FyfwLX4HAxM&list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-&index=1) (Video)
 * [Try git](https://try.github.io)
 * [GitHub Guides](https://guides.github.com)
-* [Python Basics](https://teamtreehouse.com/library/python-basics-3)
+* [Appium and Selenium Fundamentals](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
 
 ## Before assignment
 
