@@ -1,4 +1,4 @@
-# Week 7 Part 2
+# Week 7 Part 2 (Deadline: 2022/12/05 00:00)
 
 ## Assignment
 You have completed Stylish Web UI Automation Testing Script. Automated Tests should start without any human intervention.

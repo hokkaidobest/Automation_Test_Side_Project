@@ -1,4 +1,4 @@
-# Week 1 Part 2
+# Week 1 Part 2 (Deadline: 2022/10/24 00:00)
 
 ## Assignment 1: List and Dictionary (Python)
 Complete the function below by Python which can calculate the average price of all the  products. 
@@ -60,7 +60,12 @@ print(group_by_key(input2)) # should print {‘a’: 6, ‘b’: 1, ‘c’: 7}
 ```
 
 ## Assignment 3: Algorithm Practice (Advanced Optional) 
-We created a function in Assignment 3 which can find the position of the target number  inside an array of numbers. Actually, if the array was Sorted already, there is a beautiful  algorithm called **Binary Search** which can do this job efficiently. You can try to look up these keywords and learn the concept behind this algorithm and write the code by yourself. 
+We created a function in Assignment 3 in week 1 part 1 which can find the position of the target number  inside an array of numbers. 
+
+Actually, if the array was Sorted already, there is a beautiful algorithm called **Binary Search** which can do this job efficiently. 
+
+You can try to look up these keywords and learn the concept behind this algorithm and write the code by yourself. 
+
 For simplicity, you can assume that there are no duplicate numbers in the given array. It  could be a bit of a challenge if you haven’t learned any algorithm before.
 
 ```python

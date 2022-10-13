@@ -1,4 +1,4 @@
-# Week 4 Part 1
+# Week 4 Part 1 (Deadline: 2022/11/10 00:00)
 
 ## Assignment 3: Using MySQL in Python
 

@@ -1,4 +1,4 @@
-# Week 3 Part 1
+# Week 3 Part 1 (Deadline: 2022/11/03 00:00)
 
 ## Assignment 1:  Non-element Interaction (Selenium)
 

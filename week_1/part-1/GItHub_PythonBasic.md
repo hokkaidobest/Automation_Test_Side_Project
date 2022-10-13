@@ -1,4 +1,4 @@
-# Week 1 Part 1
+# Week 1 Part 1 (Deadline: 2022/10/20 00:00)
 
 ## Online Learning Material
 
@@ -38,7 +38,7 @@ Ex: For week 1 part 1
 4. Push **current assignment branch** to `your forked repository`.
 
 ### How to hand-in?
-Please find the **assignment branch** on your `forked repository` and make a pull request from this branch to `[your_name]_develop` of the `upstream repository`. (Please never make a pull request to the master branch of the `upstream repository`)
+Please find the **assignment branch** on your `forked repository` and make a pull request from this branch to `[your_name]-develop` of the `upstream repository`. (Please never make a pull request to the master branch of the `upstream repository`)
 
 ### About Pull Request
 - Always include **short description of what you have done** in the description of pull request.
@@ -85,7 +85,8 @@ print(find_max([1, 2, 4, 5]) ) 	            # should print 5
 print(find_max([5, 2, 7, 1, 6]) )           # should print 7 
 print(find_position([5, 2, 7, 1, 6], 5))    # should print 0 
 print(find_position([5, 2, 7, 1, 6], 7))    # should print 2 
-print(find_position([5, 2, 7, 7, 7, 1, 6], 7))  # should print 2 (the first one) print(find_position([5, 2, 7, 1, 6], 8)) # should print -1
+print(find_position([5, 2, 7, 7, 7, 1, 6], 7))  # should print 2 (the first one) 
+print(find_position([5, 2, 7, 1, 6], 8))    # should print -1
 ```
 
 ## Assignment 4: Python Basic - Sum of Factorials  (Advanced Optional) 
@@ -93,7 +94,7 @@ print(find_position([5, 2, 7, 7, 7, 1, 6], 7))  # should print 2 (the first one)
 Write a script to find the sum of factorials. (I.e. 1! + 2! + 3! … = ?)  
 
 ```python
-def find_sum_of_factorials(numbers): 
+def find_sum_of_factorials(number): 
     # your code here 
 
 print(find_sum_of_factorials(3))  # = 1! + 2! + 3!, =  1 + 1 x 2 + 1 x 2 x 3,  should print 9
