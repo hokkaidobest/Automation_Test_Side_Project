@@ -1,11 +1,12 @@
-# Week 1 Part 1 (Deadline: 2022/10/20 00:00)
+# Week 1 Part 1 (Deadline: 2022/10/19 23:59)
 
 ## Online Learning Material
 
-* [GitHub Training & Guides](https://www.youtube.com/watch?v=FyfwLX4HAxM&list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-&index=1) (Video)
-* [Try git](https://try.github.io)
-* [GitHub Guides](https://guides.github.com)
-* [Appium and Selenium Fundamentals](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
+* [GitHub Document - Quick Start](https://docs.github.com/en/get-started/quickstart/set-up-git) (Video)
+* [HeadSpin University 課程](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
+  * Section 1: Course Into and Overview 
+  * Section 2: Introduction to Automated Testing 
+  * Section 3: Python For Testing (Section 3.1 - 3.6)
 
 ## Before assignment
 

@@ -1,4 +1,12 @@
-# Week 3 Part 1 (Deadline: 2022/11/03 00:00)
+# Week 3 Part 1 (Deadline: 2022/11/02 23:59)
+
+## Online Learning Material
+* [HeadSpin University 課程](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
+  * Section 4: Overview of Web and Mobile testing
+  * Section 5: The WebDriver automation Architecture 
+  * Section 6: Installation and Setup
+  * Section 7: Web Browser Automation Using Selenium
+* [XPath Tutorial](https://www.w3schools.com/xml/xpath_intro.asp)
 
 ## Assignment 1:  Non-element Interaction (Selenium)
 

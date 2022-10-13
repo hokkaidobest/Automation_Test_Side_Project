@@ -1,4 +1,8 @@
-# Week 1 Part 2 (Deadline: 2022/10/24 00:00)
+# Week 1 Part 2 (Deadline: 2022/10/23 23:59)
+
+## Online Learning Material
+* [List & Tuple](https://www.youtube.com/watch?v=JLU5oc4_VtA&list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk&index=4)
+* [Set & Dictionary](https://www.youtube.com/watch?v=L3-KuGYhw78&list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk&index=5)
 
 ## Assignment 1: List and Dictionary (Python)
 Complete the function below by Python which can calculate the average price of all the  products. 

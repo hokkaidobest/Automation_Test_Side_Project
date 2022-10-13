@@ -1,4 +1,7 @@
-# Week 4 Part 2 (Deadline: 2022/11/14 00:00)
+# Week 4 Part 2 (Deadline: 2022/11/13 23:59)
+
+## Online Learning Material
+* [What is Entity Relationship Diagram (ERD) ?](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/)
 
 ## Assignment
 You are working on an e-commerce development project - Stylish.

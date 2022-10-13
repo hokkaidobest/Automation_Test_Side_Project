@@ -1,4 +1,9 @@
-# Week 4 Part 1 (Deadline: 2022/11/10 00:00)
+# Week 4 Part 1 (Deadline: 2022/11/09 23:59)
+
+## Online Learning Material
+* [Install MySQL on Windows](https://www.youtube.com/watch?v=WuBcTJnIuzo&t=723s) - [Document](https://dev.mysql.com/doc/refman/5.7/en/windows-installation.html)
+* [Install MySQL on Mac](https://www.youtube.com/watch?v=UcpHkYfWarM) - [Document](https://dev.mysql.com/doc/refman/5.7/en/osx-installation.html)
+* [Udemy - Learn SQL / MySQL database basics](https://www.udemy.com/cart/subscribe/course/4538848/)
 
 ## Assignment 3: Using MySQL in Python
 

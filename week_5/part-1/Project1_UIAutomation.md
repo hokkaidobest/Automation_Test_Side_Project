@@ -1,4 +1,9 @@
-# Week 5 Part 1 (Deadline: 2022/11/17 00:00)
+# Week 5 Part 1 (Deadline: 2022/11/16 23:59)
+
+## Online Learning Material
+* [PyTest Documents](https://docs.pytest.org/en/7.1.x/) 
+* [HeadSpin University 課程](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
+  * Section 10: Test Suite Design
 
 ## Assignment
 Let start to write automation script to execute Web UI Automation Testing for Stylish.

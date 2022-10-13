@@ -1,4 +1,8 @@
-# Week 2 Part 1 (Deadline: 2022/10/27 00:00)
+# Week 2 Part 1 (Deadline: 2022/10/26 23:59)
+
+## Online Learning Material
+* [HeadSpin University 課程](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
+  * Section 3: Python For Testing (Section 3.7 - 3.10)
 
 ## Assignment 1: Class and Object (Python)
 Write a program which creates a class "Student" with the following Data:

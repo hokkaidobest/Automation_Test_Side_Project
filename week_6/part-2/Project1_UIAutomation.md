@@ -1,4 +1,4 @@
-# Week 6 Part 2 (Deadline: 2022/11/28 00:00)
+# Week 6 Part 2 (Deadline: 2022/11/27 23:59)
 
 ## Assignment
 You are going to test **shopping cart** and **checkout** feature.

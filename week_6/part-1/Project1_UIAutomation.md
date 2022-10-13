@@ -1,4 +1,4 @@
-# Week 6 Part 1 (Deadline: 2022/11/24 00:00)
+# Week 6 Part 1 (Deadline: 2022/11/23 23:59)
 
 ## Assignment
 You are going to test login and logout feature. You should understand the login flow first.

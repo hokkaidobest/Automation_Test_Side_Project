@@ -1,4 +1,8 @@
-# Week 2 Part 2 (Deadline: 2022/10/31 00:00)
+# Week 2 Part 2 (Deadline: 2022/10/30 23:59)
+
+## Online Learning Material
+* [Pandas DataFrame 匯出到 Excel](https://www.delftstack.com/zh-tw/howto/python-pandas/export-pandas-dataframe-to-excel-file/)
+* [Python & Pandas](https://stylengineer.com/program/python-pandas/)
 
 ## Assignment 1: Excel Application
 

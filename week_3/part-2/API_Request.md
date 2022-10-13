@@ -1,4 +1,9 @@
-# Week 3 Part 2 (Deadline: 2022/11/07 00:00)
+# Week 3 Part 2 (Deadline: 2022/11/06 23:59)
+
+## Online Learning Material
+* [RESTful API Testing with Postman](https://www.udemy.com/course/restful-api-testing-with-postman/learn/lecture/6075726#overview)
+* [Python Dictionary and JSON](https://medium.com/analytics-vidhya/python-dictionary-and-json-a-comprehensive-guide-ceed58a3e2ed)
+* [Python Requests](https://www.youtube.com/playlist?list=PLJ1odve0o6dX5ndJ5lwiCOR58ycB1rcrV)
 
 ## Assignment 1: Python Requests
 

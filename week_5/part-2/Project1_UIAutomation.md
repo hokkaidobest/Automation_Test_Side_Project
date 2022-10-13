@@ -1,4 +1,4 @@
-# Week 5 Part 2 (Deadline: 2022/11/21 00:00)
+# Week 5 Part 2 (Deadline: 2022/11/20 23:59)
 
 ## Assignment
 Create a new test file "test_web_product_page.py", and write automation script for the below scenario.
