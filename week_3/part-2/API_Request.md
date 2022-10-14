@@ -4,6 +4,7 @@
 * [RESTful API Testing with Postman](https://www.udemy.com/course/restful-api-testing-with-postman/learn/lecture/6075726#overview)
 * [Python Dictionary and JSON](https://medium.com/analytics-vidhya/python-dictionary-and-json-a-comprehensive-guide-ceed58a3e2ed)
 * [Python Requests](https://www.youtube.com/playlist?list=PLJ1odve0o6dX5ndJ5lwiCOR58ycB1rcrV)
+* [curl](https://blog.techbridge.cc/2019/02/01/linux-curl-command-tutorial/)
 
 ## Assignment 1: Python Requests
 
@@ -41,3 +42,17 @@ Extract the room ID of the first room.
 ```
 4. Verify that your booking is successful by checking the response status code.
 5. Assert the response booking information is correct.
+
+## Assignment 4: Algorithm Practice
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+```python
+def single_number(nums):
+    # your code here
+
+print(single_number([2, 2, 1])) # Should be 1
+print(single_number([4, 1, 2, 1, 2])) # Should be 4
+print(single_number([1])) # Should be 1
+```

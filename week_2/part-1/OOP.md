@@ -63,7 +63,7 @@ dog.catch_mouse() # Print "I caught a mouse."
 
 ```
 
-## Assignment 3: Python Practice (Advanced Optional)
+## Assignment 3: Algorithm Practice (Advanced Optional)
 Given a list of integers, return indices of the two numbers such that they add up to a
 specific target. You may assume that each input would have exactly one solution, and you
 may not use the same element twice.
@@ -75,4 +75,3 @@ def two_sum(nums, target):
 print(two_sum([2, 7, 11, 15], 9)) # Should be [0, 1], because nums[0] + nums[1] = 9
 print(two_sum([3, 6, 11, 15], 17)) # Should be [1, 2], because nums[1] + nums[2] = 17
 ```
-

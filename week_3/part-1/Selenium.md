@@ -37,7 +37,7 @@ In this Assignment, you should use a **Python Assert Statement** to verify the c
 ### Scenario:
 1. Open the Chrome browser
 2. Go to Demo Store (http://demostore.supersqa.com)
-3. Add “Album” to cart
+3. Add “Album” to cart and view cart
 4. Change the quantity to 2 and update cart in Cart Page
 5. Verify that Subtotal is $30.00
 6. Click “Checkout” and Fill in the form as below:
@@ -58,3 +58,18 @@ In this Assignment, you should use a **Python Assert Statement** to verify the c
 9. Click Place Order
 10. Verify that “Invalid payment method” is displayed.
 11. Finally, Close the Browser
+
+
+## Assignment 3: Algorithm Practice (Advanced Optional)
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+Increment the large integer by one and return the resulting array of digits.
+
+```python
+def plus_one(nums):
+    # your code here
+
+print(plus_one([1, 2, 3])) # Should be [1, 2, 4] because 123 + 1 = 124 ==> [1, 2, 4]
+print(plus_one([4, 3, 2, 1])) # Should be [4, 3, 2, 2]
+print(plus_one([9])) # Should be [1, 0]
+```

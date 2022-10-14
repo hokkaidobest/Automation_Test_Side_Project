@@ -59,3 +59,16 @@ division(100, 0)    # Should Throw ZeroDivisionError, print "y cannot be 0" and 
 division(100, "a")  # Should Throw TypeError, print "y should be integer" and "---Finish---"
 
 ```
+
+## Assignment 3: Algorithm Practice (Advanced Optional)
+Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+Return the running sum of nums.
+
+```python
+def running_sum(nums):
+    # your code here
+
+print(running_sum([1, 2, 3, 4])) # Should be [1, 3, 6, 10] because [1, 1+2, 1+2+3, 1+2+3+4]
+print(running_sum([1, 1, 1, 1, 1])) # Should be [1, 2, 3, 4, 5]
+print(running_sum([3, 1, 2, 10, 1])) # Should be [3, 4, 6, 16, 17]
+```
