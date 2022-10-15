@@ -5,7 +5,7 @@
   * Section 3: Python For Testing (Section 3.7 - 3.10)
 
 ## Assignment 1: Class and Object (Python)
-Write a program which creates a class "Student" with the following Data:
+Write a program which creates a class "Student" with the following attribute:
 student_name, mark1, mark2, mark3, total_marks
 
 Methods:
@@ -27,11 +27,11 @@ student_a.display_student_details() # should print "Mary: 180"
 
 ## Assignment 2: Object-Oriented Programming (Python)
 
-- Write a class called Animal is designed to model an animal. 
-  - It contains an instance variables **sound** and two methods **get_sound()** and **get_type()**.
+- Create a class called Animal is designed to model an animal. 
+  - It contains an attribute **sound** and two methods **get_sound()** and **get_type()**.
   - get_type(): print out "I am animal."
   - get_sound(): print out "Hello World"
-- Write two subclasses of Animal called Dog and Cat.
+- Create two subclasses of Animal called Dog and Cat.
   - Dog class:
     - override the method get_sound(). The Sound of Dog is "Woof! Woof!"
     - contains a method catch_cat(): print out "I caught a cat."

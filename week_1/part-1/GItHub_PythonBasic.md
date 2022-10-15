@@ -71,8 +71,8 @@ print(check_bmi(1.6, 100))  # print False
 
 ## Assignment 3: Python Basic - Find Maximum and Position
 Your job is to complete the following two functions. 
-1. find_max(): find the max value of an array of numbers.
-2. find_position(): find the first position of the target number inside an array of numbers. The position should be counted starting from 0, if you can't find the target, please return -1.
+1. find_max(): find the maximum value in the array.
+2. find_position(): find the first position of the target number inside the array. The position should be counted starting from 0, if you can't find the target, please return -1.
 * Reminder: you cannot use those built-in functions like max() and index() to complete this  assignment, please implement it by yourself. 
 
 ```python

@@ -5,7 +5,7 @@
 * [Set & Dictionary](https://www.youtube.com/watch?v=L3-KuGYhw78&list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk&index=5)
 
 ## Assignment 1: List and Dictionary (Python)
-Complete the function below by Python which can calculate the average price of all the  products. 
+Complete the function below which can calculate the average price of all products. 
 
 ```python
 def avg(data): 
@@ -33,7 +33,7 @@ print(
 ```
 
 ## Assignment 2: Data Manipulation (Python) 
-Complete the following functions by Python 
+Complete the following functions 
 
 1. count(): return an object which shows the count of each character.
 2. group_by_key(): return an object which shows the summed up value of each key. 
@@ -70,7 +70,7 @@ Actually, if the array was Sorted already, there is a beautiful algorithm called
 
 You can try to look up these keywords and learn the concept behind this algorithm and write the code by yourself. 
 
-For simplicity, you can assume that there are no duplicate numbers in the given array. It  could be a bit of a challenge if you haven’t learned any algorithm before.
+For simplicity, you can assume that there are no duplicate numbers in the given array. It  could be a bit of a challenge if you haven’t learned any algorithm.
 
 ```python
 def binary_search_position(numbers, target): 
