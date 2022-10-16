@@ -1,7 +1,7 @@
 # Week 6 Part 1 (Deadline: 2022/11/23 23:59)
 
 ## Assignment
-You are going to test login and logout feature. You should understand the login flow first.
+You are going to test login and logout feature. You should understand the login, logout flow first.
 
 Create a new test file "test_web_login.py", and write automation script for the below scenario.
 
@@ -28,3 +28,17 @@ Create a new test file "test_web_login.py", and write automation script for the 
 ### Requirements:
 - Using PyTest **Fixture** to write login function
 - Handle the secret key (email/password) by using Environment Variables and env files.
+
+### Expected Project Structure
+```
+    ├── tests_web
+          ├── __init__.py
+          ├── conftest.py
+          └── test_xxxx.py
+    ├── page_objects
+          ├── xxxx_page.py
+          └── action_utils.py (optional)
+    ├── .env (New)      
+    ├── pytest.ini
+    └── requirement.rf
+```

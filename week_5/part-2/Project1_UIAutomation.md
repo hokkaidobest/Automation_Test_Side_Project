@@ -50,7 +50,7 @@ Create a new test file "test_web_product_page.py", and write automation script f
 
 ---
 ### Requirements:
-- Generate Allure Report when testing complete.
-- Display Testing Completed Screenshot in Testing Report.
+- Generate **Allure Report** when testing complete.
+- Attach the Testing Final Screenshot in Testing Report.
 - Add Testing log.
-- Write a Shell script which called exec_test.sh to execute test and generate allure report.
+- Write a Shell script which called **exec_test.sh** to execute test and generate allure report.

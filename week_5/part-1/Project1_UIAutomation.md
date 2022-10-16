@@ -6,7 +6,6 @@
   * Section 10: Test Suite Design
 
 ## Assignment
-Let start to write automation script to execute Web UI Automation Testing for Stylish.
 
 ---
 ### Feature: Product Search
@@ -44,9 +43,10 @@ Create a test file "test_web_category.py" and write automation script for below 
     ├── tests_web
           ├── __init__.py
           ├── conftest.py
-          ├── test_xxxx.py
+          └── test_xxxx.py
     ├── page_objects
-          └── xxxx_page.py
+          ├── xxxx_page.py
+          └── action_utils.py (optional)
     ├── pytest.ini
     └── requirement.rf
 ```

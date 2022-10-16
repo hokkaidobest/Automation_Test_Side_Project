@@ -49,3 +49,20 @@ Create a new test file "test_web_checkout.py", and write automation script for t
 - Create a file with the name "get_data_from_excel.py" to write a module for reading excel data from Stylish-Test Case.xlsx
 - Using parametrizing fixtures to run the test against multiple sets of inputs.
 - Try to execute test in headless browser mode. 
+
+### Expected Project Structure
+```
+    ├── tests_web
+          ├── __init__.py
+          ├── conftest.py
+          └── test_xxxx.py
+    ├── page_objects
+          ├── xxxx_page.py
+          └── action_utils.py (optional)
+    ├── test_data
+          ├── xxxx.xlxs (New)
+          └── get_data_from_excel.py (New)
+    ├── .env
+    ├── pytest.ini
+    └── requirement.rf
+```

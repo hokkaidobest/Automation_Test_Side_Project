@@ -15,7 +15,7 @@ We are using MySQL, you should connect to MySQL server with following informatio
 - Hostname: 54.201.140.239
 - Port: 3306
 - Username: readonly
-- Password: Please ask your instructor
+- Password: **Please ask your instructor**
 - Schema: stylish_backend
 
 Draw an **Entity Relationship Diagram (ERD)** for following tables:

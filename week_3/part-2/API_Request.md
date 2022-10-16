@@ -46,8 +46,6 @@ Extract the room ID of the first room.
 ## Assignment 4: Algorithm Practice
 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
-You must implement a solution with a linear runtime complexity and use only constant extra space.
-
 ```python
 def single_number(nums):
     # your code here
