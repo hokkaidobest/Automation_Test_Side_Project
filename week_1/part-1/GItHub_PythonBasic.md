@@ -33,7 +33,7 @@ Ex: For week 1 part 1
   => week_1_part_1
 ```
 
-1. Find a sub-folder named **Stylish** under the **students/[your_name]** folder.
+1. Find the **students/[your_name]** folder.
 2. Modify **README.md** file, write down **your name** in this file.
 3. Make your first commit for the changes using git.
 4. Push **current assignment branch** to `your forked repository`.
