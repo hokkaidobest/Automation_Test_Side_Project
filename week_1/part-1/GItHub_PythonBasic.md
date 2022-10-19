@@ -2,7 +2,7 @@
 
 ## Online Learning Material
 
-* [GitHub Document - Quick Start](https://docs.github.com/en/get-started/quickstart/set-up-git) (Video)
+* [GitHub Document - Quick Start](https://docs.github.com/en/get-started/quickstart/set-up-git) 
 * [HeadSpin University 課程](https://ui.headspin.io/university/learn/appium-selenium-fundamentals-2020/units)
   * Section 1: Course Into and Overview 
   * Section 2: Introduction to Automated Testing 
