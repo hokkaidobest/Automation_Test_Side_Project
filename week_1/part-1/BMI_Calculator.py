@@ -1,13 +1,16 @@
-# coding=utf-8
+import numpy
 
 def check_bmi(height, weight):
     # your code here
-    height = float(height)
-    weight = float(weight)
 
-    result = weight/(height)**2
+    # 利用 square 將身高處理成平方
+    square_height = numpy.square(height)
 
-    if result>=18.5 and result<24:
+    # 體重除以身高的平方
+    result = weight / square_height
+
+    # 結果若介於 18.5 到 24 間，回傳 True；若否則回傳 False
+    if result >= 18.5 and result < 24:
         return True
     else:
         return False
