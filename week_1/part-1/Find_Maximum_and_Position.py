@@ -16,15 +16,15 @@ def find_max(numbers):
 def find_position(numbers, target):
     # your code here
 
+    # 若 target 沒有 match 到任何一個 value，就回傳 -1，不用進迴圈處理
+    if target not in numbers:
+        return -1
+
     # 利用 enumerate 將 key => value 替代為 i, j
     for i, j in enumerate(numbers):
-        
         # 如果 target match 到 list 的 value，就回傳 key
         if j == target:
             return i
-        # 若 target 沒有 match 到任何一個 value，就回傳 -1
-        elif target not in numbers:
-            return -1
 
 print(find_max([1, 2, 4, 5]) ) 	            # should print 5 
 print(find_max([5, 2, 7, 1, 6]) )           # should print 7 
