@@ -16,9 +16,6 @@ class Dog(Animal):
     def __init__(self):
         self.sound = "Woof! Woof!"
 
-    def get_type(self):
-        super().get_type()
-
     def get_sound(self):
         print(self.sound)
 
@@ -30,9 +27,6 @@ class Cat(Animal):
 
     def __init__(self):
         self.sound = "Meow! Meow!"
-
-    def get_type(self):
-        super().get_type()
 
     def get_sound(self):
         print(self.sound)
