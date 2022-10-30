@@ -8,12 +8,12 @@ student_data = pd.DataFrame({
     "Writing": [80, 95, 98, 82, 80]
 })
 
-student_file = "/Users/nmp/code/Automation-Test-Program-Batch1/week_2/part-2/student.xlsx"
+student_file = "Automation-Test-Program-Batch1/week_2/part-2/student.xlsx"
 writer = pd.ExcelWriter(student_file, engine = 'xlsxwriter')
 student_data.to_excel(writer, sheet_name = 'Sheet1', index = False)
 writer.close()
 
-reader = pd.read_excel(r"/Users/nmp/code/Automation-Test-Program-Batch1/week_2/part-2/student.xlsx")
+reader = pd.read_excel(r"Automation-Test-Program-Batch1/week_2/part-2/student.xlsx")
 
 average = [0.2, 0.25, 0.3, 0.25]
 
