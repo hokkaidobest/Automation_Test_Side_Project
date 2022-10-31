@@ -2,12 +2,6 @@ def division(x, y):
     # your code here
 
     try:
-        if type(y) != int:
-            raise TypeError
-        elif y == 0:
-            raise ZeroDivisionError
-        
-        # When all the conditions are passed, do the calculation
         print(x / y)
     except TypeError:
         print("y should be integer")

@@ -25,6 +25,6 @@ for i in range(reader["Student"].count()):
     student_each_score = student_score.mul(average)
     
     # 將每科計算後的分數加總
-    result = student_each_score["Reading"] + student_each_score["Listening"] + student_each_score["Speaking"] + student_each_score["Writing"]
+    result = student_each_score.sum()
     
     print(f'student: {reader["Student"][i]}, score: {result}')
