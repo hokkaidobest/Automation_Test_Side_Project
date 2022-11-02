@@ -21,7 +21,7 @@ else:
     print("FAIL")
 
 # Step 5 : Click the link “AppWorks” in top right corner
-element = driver.find_element(By.XPATH, '//*[@id="menu-item-2269"]/a')
+element = driver.find_element(By.XPATH, '//a[contains(@href, "https://appworks.tw")]')
 element.click()
 
 # Step 6 : Switch to new tabs to AppWorks website
