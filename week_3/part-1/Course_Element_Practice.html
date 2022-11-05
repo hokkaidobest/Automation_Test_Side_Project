@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trunk name="the_trunk">
+    <bigBranch name="bb1" thickness="thick">
+        <smallBranch name="sb1">
+            <leaf name="leaf1" color="brown"/>
+            <leaf name="leaf2" weight="50"/>
+            <leaf name="leaf3"/>
+        </smallBranch>
+        <smallBranch name="sb2">
+            <leaf name="leaf4" weight="90"/>
+            <leaf name="leaf5" color="purple"/>
+        </smallBranch>
+    </bigBranch>
+    <bigBranch name="bb2">
+        <smallBranch name="sb3">
+            <leaf name="leaf6"/>
+        </smallBranch>
+        <smallBranch name="sb4">
+            <leaf name="leaf7"/>
+            <leaf name="leaf8"/>
+            <leaf name="leaf9" color="black"/>
+            <leaf name="leaf10" weight="100"/>
+        </smallBranch>
+    </bigBranch>
+    <bigBranch name="bb3" thickness="thin">
+        <smallBranch name="sb5" color="lightBrown">
+            <leaf name="leaf11"/>
+            <leaf name="leaf12"/>
+        </smallBranch>
+        <smallBranch name="sb6" thickness="thin">
+            <leaf name="leaf13" weight="2"/>
+            <leaf name="leaf14" color="red"/>
+            <leaf name="leaf15"/>
+        </smallBranch>
+        <smallBranch name="sb7">
+            <leaf name="leaf16"/>
+            <leaf name="leaf17" color="red"/>
+        </smallBranch>
+    </bigBranch>
+</trunk>
+
+1. 找出名為 bb2 的 bigBranch
+1. //bigBranch[@name = "bb2"]
+
+2. 找出重量超過 70 的 leaf
+2. //leaf[@weight > 70]
+
+3. 找出含有黑色小樹葉的 bigBranch
+3. //leaf[@color = "black"]/ancestor::bigBranch
+
+4. 找出名為 bb3 的 bigBranch 下含有 leaf 重量為 2 的 smallBranch
+4. //bigBranch[@name = "bb3"]/descendant::leaf[@weight = 2]/parent::smallBranch
