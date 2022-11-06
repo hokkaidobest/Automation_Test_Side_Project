@@ -21,13 +21,13 @@ class IndexPage(ActionUtils):
     def click_view_cart_btn(self):
         self.find_clickable_elem(self.view_cart_btn_locator).click()
 
-    def click_item_qty_btn(self):
+    def get_item_qty_btn(self):
         return self.find_clickable_elem(self.update_item_qty_locator)
 
     def click_update_cart_btn(self):
         self.find_clickable_elem(self.update_cart_btn_locator).click()
 
-    def get_update_alert_message_locator(self):
+    def is_update_alert_message_present(self):
         self.find_present_elem(self.update_alert_message_locator)
 
     def get_subtotal_text_locator(self):

@@ -25,12 +25,12 @@ try:
     index_page.click_view_cart_btn()
     
     # Step 4 : Change the quantity to 2 and update cart in Cart Page
-    qty_text_field_elem = index_page.click_item_qty_btn()
+    qty_text_field_elem = index_page.get_item_qty_btn()
     qty_text_field_elem.clear()
     qty_text_field_elem.send_keys(2)
 
     index_page.click_update_cart_btn()
-    index_page.get_update_alert_message_locator()
+    index_page.is_update_alert_message_present()
 
     # Step 5 : Verify that Subtotal is $30.00
     subtotal_text_elem = index_page.get_subtotal_text_locator()
