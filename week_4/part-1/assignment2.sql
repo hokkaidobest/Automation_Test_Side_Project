@@ -1,3 +1,7 @@
+CREATE DATABASE `assignment`;
+
+USE `assignment`;
+
 CREATE TABLE `StudentScore`(
  `id` VARCHAR(20),
  `name` VARCHAR(20) NOT NULL DEFAULT '',
