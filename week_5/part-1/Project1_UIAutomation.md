@@ -17,11 +17,11 @@ Create a test file "test_web_search.py" and write automation script for below sc
 
 #### Scenario: Search Product Without Keyword
 - **When** search with empty keyword
-- **Then** no product should be displayed 
+- **Then** all product should be displayed 
 
 #### Scenario: Search Product - No Product Found
 - **When** search with keyword "Hello"
-- **Then** all products should be displayed
+- **Then** no products should be displayed
 
 ---
 ### Feature: Category
