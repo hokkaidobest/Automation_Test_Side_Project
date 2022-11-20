@@ -14,3 +14,13 @@ class MainPageSql(ActionUtils):
         records = self.cursor.fetchone()
         
         return records[0]
+
+    def get_products_id_list_by_category(self, category):
+        sql = f"SELECT title FROM product WHERE category = '{category}';"
+        self.cursor.execute(sql)
+        records = self.cursor.fetchall()
+        result = []
+        for record in records:
+            result.append(record[0])
+        
+        return records

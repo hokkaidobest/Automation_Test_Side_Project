@@ -23,3 +23,19 @@ class Get:
             i + 1
 
         return count
+
+    def get_products_id_list_by_category(self, category):
+        self.url = f"{self.basic_url}products/{category}?paging={self.paging}"
+
+        result = []
+        response = requests.get(self.url)
+        for data in response.json()["data"]:
+            result.append(data["title"])
+        # count = len(result.json()["data"])
+
+        if "next_paging" in response.json():
+            self.url = f"{self.basic_url}products/{category}?paging={response.json()['next_paging']}"
+            for data in response.json()["data"]:
+                result.append(data["title"])
+
+        return result
