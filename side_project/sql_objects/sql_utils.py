@@ -1,6 +1,6 @@
 import mysql.connector
 
-class ActionUtils():
+class SqlUtils():
     def __init__(self):
         self.connection = mysql.connector.connect(
             host = "54.201.140.239",

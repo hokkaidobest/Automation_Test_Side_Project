@@ -1,18 +1,18 @@
-from sql_objects.action_utils import *
+from sql_objects.sql_utils import *
 
-class MainPageSql(ActionUtils):
-    def get_products_count_without_keyword(self):
-        sql = "SELECT COUNT(*) FROM product;"
-        self.cursor.execute(sql)
-        records = self.cursor.fetchone()
-
-        return records[0]
-
+class Product(SqlUtils):
     def get_product_count_with_keyword(self, keyword):
         sql = f"SELECT COUNT(*) FROM product WHERE title LIKE '%{keyword}%';"
         self.cursor.execute(sql)
         records = self.cursor.fetchone()
         
+        return records[0]
+
+    def get_products_count_with_empty_keyword(self):
+        sql = "SELECT COUNT(*) FROM product;"
+        self.cursor.execute(sql)
+        records = self.cursor.fetchone()
+
         return records[0]
 
     def get_products_id_list_by_category(self, category):
