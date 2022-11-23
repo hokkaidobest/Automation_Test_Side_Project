@@ -1,8 +1,6 @@
 from page_objects.main_page import MainPage
 from sql_objects.product import Product
 
-from selenium.webdriver.common.keys import Keys
-
 # Test case 1
 # When search with keyword "洋裝"
 # Then all searched product title should be included "洋裝"
@@ -11,8 +9,7 @@ def test_search_product_with_keyword(main_broswer):
     main_page = MainPage(main_broswer)
     
     # Send keyword to search
-    main_page.input_search_text().send_keys(keyword)
-    main_page.input_search_text().send_keys(Keys.ENTER)
+    main_page.input_search_text(keyword)
     
     # Get element's text to verify
     products = main_page.get_search_result()
@@ -23,11 +20,11 @@ def test_search_product_with_keyword(main_broswer):
 # When search with empty keyword
 # Then all products should be displayed
 def test_search_product_with_empty_keyword(main_broswer):
+    keyword = ""
     main_page = MainPage(main_broswer)
 
     # Send keyword to search
-    main_page.input_search_text().send_keys("")
-    main_page.input_search_text().send_keys(Keys.ENTER)
+    main_page.input_search_text(keyword)
     
     # Get Selenium's saerch result
     products = main_page.get_products_count_with_empty_keyword()
@@ -37,7 +34,7 @@ def test_search_product_with_empty_keyword(main_broswer):
     sql_products = sql.get_products_count_with_empty_keyword()
 
     # Compare number of Selenium's result and DB's result
-    assert products == sql_products, "The search value dose not same between Web UI and API."
+    assert products == sql_products, "The search value dose not same between Web UI and Sql."
 
 # Test case 3
 # When search with keyword "Hello"
@@ -47,12 +44,12 @@ def test_search_product_with_keyword_but_empty_result(main_broswer):
     main_page = MainPage(main_broswer)
 
     # Send keyword to search
-    main_page.input_search_text().send_keys(keyword)
-    main_page.input_search_text().send_keys(Keys.ENTER)
+    main_page.input_search_text(keyword)
 
     # Get saerch result
     products = main_page.check_element_exists_by_xpath()
 
+    # The product was not found
     assert products == False, "Wrong result, please check later."
 
     # Get SQL's select result

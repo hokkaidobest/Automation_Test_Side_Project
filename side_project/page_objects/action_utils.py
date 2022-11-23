@@ -22,3 +22,9 @@ class ActionUtils():
             EC.element_to_be_clickable(locator)
         )
         return elem
+
+    def check_elem_exist(self, locator, timeout = 10):
+        elem = WebDriverWait(self.driver, timeout).until_not(
+            EC.presence_of_element_located(locator)
+        )
+        return elem
