@@ -1,8 +1,5 @@
 import logging
 
-from page_objects.product_page import ProductPage
-from sql_objects.product import Product
-
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
 
@@ -27,8 +24,8 @@ def test_color_selection(product_broswer):
         LOGGER.info(f"[UI] Color selected {selected_color_id}, {selected_color_class}")
         
         assert "product__color--selected" in selected_color_class
-        LOGGER.info(f"[VERIFICATION] Selected color is highlighted")
-        LOGGER.info(f"[END] test_color_selection")
+        LOGGER.info("[VERIFICATION] Selected color is highlighted")
+        LOGGER.info("[END] test_color_selection")
 
 # Test case 2 : Size Selection
 # Given entered a product page
@@ -49,8 +46,8 @@ def test_size_selection(product_broswer):
         LOGGER.info(f"[UI] Size selected {selected_size_class}")
 
         assert "product__size product__size--selected" in selected_size_class
-        LOGGER.info(f"[VERIFICATION] Selected size is highlighted")
-        LOGGER.info(f"[END] test_size_selection")
+        LOGGER.info("[VERIFICATION] Selected size is highlighted")
+        LOGGER.info("[END] test_size_selection")
 
 # Test case 3 : Quantity Editor Disabled
 # Given entered a product page
@@ -65,8 +62,8 @@ def test_quantity_editor_disabled(product_broswer):
     LOGGER.info("[ACTION]] Click add quantity btn once")
 
     assert product_broswer.get_current_quantity_value() == "1"
-    LOGGER.info(f"[VERIFICATION] Quantity editor is disabled")
-    LOGGER.info(f"[END] test_size_selection")
+    LOGGER.info("[VERIFICATION] Quantity editor is disabled")
+    LOGGER.info("[END] test_size_selection")
 
 # Test case 4 : Quantity Editor - Increase Quantity
 # Given entered a product page
@@ -87,14 +84,14 @@ def test_increase_quantity(product_broswer):
     LOGGER.info("[ACTION]] add 8 more quantity")
 
     assert product_broswer.get_current_quantity_value() == "9"
-    LOGGER.info(f"[VERIFICATION] Quantity should be 9")
+    LOGGER.info("[VERIFICATION] Quantity should be 9")
 
     product_broswer.click_add_quantity_btn(2)
     LOGGER.info("[ACTION]] Add 2 more quantity")
 
     assert product_broswer.get_current_quantity_value() == "9"
-    LOGGER.info(f"[VERIFICATION] Quantity still be 9")
-    LOGGER.info(f"[END] test_increase_quantity")
+    LOGGER.info("[VERIFICATION] Quantity still be 9")
+    LOGGER.info("[END] test_increase_quantity")
 
 # Test case 5 : Quantity Editor - Decrease Quantity
 # Given entered a product page
@@ -117,8 +114,8 @@ def test_decrease_quantity(product_broswer):
     LOGGER.info("[ACTION]] Click minus quantity btn 8 times")
 
     assert product_broswer.get_current_quantity_value() == "1"
-    LOGGER.info(f"[VERIFICATION] Quantity should be 1")
-    LOGGER.info(f"[END] test_decrease_quantity")
+    LOGGER.info("[VERIFICATION] Quantity should be 1")
+    LOGGER.info("[END] test_decrease_quantity")
 
 # Test case 6 : Add To Cart - Success
 # Given entered a product page
@@ -140,8 +137,8 @@ def test_add_to_cart_success(product_broswer):
     LOGGER.info("[UI]] Accept alert")
 
     assert product_broswer.get_cart_number() == "1"
-    LOGGER.info(f"[VERIFICATION] Cart icon number should be 1")
-    LOGGER.info(f"[END] test_add_to_cart_success")
+    LOGGER.info("[VERIFICATION] Cart icon number should be 1")
+    LOGGER.info("[END] test_add_to_cart_success")
 
 # Test case 7 : Add To Cart - Failed
 # Given entered a product page without size selection
@@ -155,5 +152,5 @@ def test_add_to_cart_failed(product_broswer):
     LOGGER.info("[ACTION]] Click add to cart btn")
 
     assert product_broswer.alert_is_present().text == "請選擇尺寸" 
-    LOGGER.info(f"[VERIFICATION] Alert message should be shown")
-    LOGGER.info(f"[END] test_add_to_cart_failed")
+    LOGGER.info("[VERIFICATION] Alert message should be shown")
+    LOGGER.info("[END] test_add_to_cart_failed")
