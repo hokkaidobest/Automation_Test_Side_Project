@@ -28,3 +28,9 @@ class ActionUtils():
             EC.presence_of_element_located(locator)
         )
         return elem
+
+    def alert_is_present(self, timeout = 10):
+        elem = WebDriverWait(self.driver, timeout).until(
+            EC.alert_is_present()
+        )
+        return elem
