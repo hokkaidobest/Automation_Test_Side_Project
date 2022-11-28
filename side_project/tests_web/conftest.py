@@ -46,11 +46,11 @@ def product_browser(main_browser, get_product):
     return product_page
 
 @pytest.fixture()
-def member_broswer(main_broswer):
+def member_browser(main_browser):
     email = env["UAT_ACCOUNT"]
     password = env["UAT_PASSWORD"]
 
-    member_page = MemberPage(main_broswer)
+    member_page = MemberPage(main_browser)
     member_page.click_profile_btn()
     LOGGER.info("[PAGE] Switch to login page")
 
