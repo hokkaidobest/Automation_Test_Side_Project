@@ -4,9 +4,9 @@ from sql_objects.product import Product
 # Test case 1
 # When search with keyword "洋裝"
 # Then all searched product title should be included "洋裝"
-def test_search_product_with_keyword(main_broswer):
+def test_search_product_with_keyword(main_browser):
     keyword = "洋裝"
-    main_page = MainPage(main_broswer)
+    main_page = MainPage(main_browser)
     
     # Send keyword to search
     main_page.input_search_text(keyword)
@@ -19,9 +19,9 @@ def test_search_product_with_keyword(main_broswer):
 # Test case 2
 # When search with empty keyword
 # Then all products should be displayed
-def test_search_product_with_empty_keyword(main_broswer):
+def test_search_product_with_empty_keyword(main_browser):
     keyword = ""
-    main_page = MainPage(main_broswer)
+    main_page = MainPage(main_browser)
 
     # Send keyword to search
     main_page.input_search_text(keyword)
@@ -39,9 +39,9 @@ def test_search_product_with_empty_keyword(main_broswer):
 # Test case 3
 # When search with keyword "Hello"
 # Then no product should be displayed
-def test_search_product_with_keyword_but_empty_result(main_broswer):
+def test_search_product_with_keyword_but_empty_result(main_browser):
     keyword = "Hello"
-    main_page = MainPage(main_broswer)
+    main_page = MainPage(main_browser)
 
     # Send keyword to search
     main_page.input_search_text(keyword)

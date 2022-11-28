@@ -24,3 +24,10 @@ class Product(SqlUtils):
             result.append(record[0])
         
         return records
+
+    def get_a_product_randomly(self):
+        sql = "SELECT id, title FROM product ORDER BY RAND() LIMIT 1;"
+        self.cursor.execute(sql)
+        product = self.cursor.fetchone()
+
+        return product
