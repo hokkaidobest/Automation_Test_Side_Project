@@ -15,11 +15,10 @@ from page_objects.member_page import MemberPage
 # When member logout
 # Then logout success
 def test_login_and_logout_success(member_browser):
-    
     LOGGER.info("[START] test_login_and_logout_success")
     
     user_token = member_browser.get_user_jwt_token()
-    LOGGER.info(f"[UI] Get user cookie from broswer: {user_token}")
+    LOGGER.info(f"[UI] Get user cookie from browser: {user_token}")
 
     email = env["UAT_ACCOUNT"]
     user_sql = User()
@@ -71,11 +70,10 @@ def test_login_failed(main_browser):
 # When using the jwt token to access member page
 # Then error message "Invalid Token"
 def test_login_with_invalid_access_token(member_browser):
-    
     LOGGER.info("[START] test_login_with_invalid_access_token")
     
     user_token = member_browser.get_user_jwt_token()
-    LOGGER.info(f"[UI] Get user cookie from broswer: {user_token}")
+    LOGGER.info(f"[UI] Get user cookie from browser: {user_token}")
 
     email = env["UAT_ACCOUNT"]
     user_sql = User()
@@ -101,5 +99,8 @@ def test_login_with_invalid_access_token(member_browser):
     member_browser.load_page("profile.html")
     assert member_browser.alert_is_present().text == "Invalid Access Token"
     LOGGER.info("[VERIFICATION] Token invalid")
+
+    member_browser.alert_is_present().accept()
+    LOGGER.info("[ACTION] Click confirm btn for screenshot")
 
     LOGGER.info("[END] test_login_with_invalid_access_token")

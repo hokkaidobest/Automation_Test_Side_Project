@@ -1,5 +1,4 @@
 import logging
-
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
 
@@ -9,8 +8,7 @@ LOGGER.setLevel(logging.DEBUG)
 # Then selected color is highlighted
 def test_color_selection(product_browser):
     LOGGER.info("[START] test_color_selection")
-    LOGGER.info("[PAGE] Enter main page")
-
+    
     colors = product_browser.get_color()
     LOGGER.info(f"[UI] Profuct colors: {colors}")
 
@@ -33,7 +31,6 @@ def test_color_selection(product_browser):
 # Then selected size is highlighted
 def test_size_selection(product_browser):
     LOGGER.info("[START] test_size_selection")
-    LOGGER.info("[PAGE] Enter main page")
 
     sizes = product_browser.get_size()
     LOGGER.info(f"[UI] Product sizes: {sizes}")
@@ -55,7 +52,6 @@ def test_size_selection(product_browser):
 # Then quantity editor is disabled
 def test_quantity_editor_disabled(product_browser):
     LOGGER.info("[START] test_quantity_editor_disabled")
-    LOGGER.info("[PAGE] Enter main page")
 
     # Click add quantity btn once
     product_browser.click_add_quantity_btn(1)
@@ -74,7 +70,6 @@ def test_quantity_editor_disabled(product_browser):
 # Then quantity still be 9
 def test_increase_quantity(product_browser):
     LOGGER.info("[START] test_increase_quantity")
-    LOGGER.info("[PAGE] Enter main page")
 
     # Click first size btn of product
     product_browser.click_size_btn()
@@ -101,7 +96,6 @@ def test_increase_quantity(product_browser):
 # Then quantity should be 1
 def test_decrease_quantity(product_browser):
     LOGGER.info("[START] test_decrease_quantity")
-    LOGGER.info("[PAGE] Enter main page")
 
     # Click first size btn of product
     product_browser.click_size_btn()
@@ -125,7 +119,6 @@ def test_decrease_quantity(product_browser):
 # And cart icon number should be 1
 def test_add_to_cart_success(product_browser):
     LOGGER.info("[START] test_add_to_cart_success")
-    LOGGER.info("[PAGE] Enter main page")
 
     product_browser.click_size_btn()
     LOGGER.info("[ACTION] Click size btn")
@@ -146,11 +139,14 @@ def test_add_to_cart_success(product_browser):
 # Then alert message should be shown
 def test_add_to_cart_failed(product_browser):
     LOGGER.info("[START] test_add_to_cart_failed")
-    LOGGER.info("[PAGE] Enter main page")
 
     product_browser.click_add_to_cart_btn()
     LOGGER.info("[ACTION] Click add to cart btn")
 
     assert product_browser.alert_is_present().text == "請選擇尺寸" 
     LOGGER.info("[VERIFICATION] Alert message should be shown")
+
+    product_browser.alert_is_present().accept()
+    LOGGER.info("[ACTION] Accept alert for screenshot")
+
     LOGGER.info("[END] test_add_to_cart_failed")

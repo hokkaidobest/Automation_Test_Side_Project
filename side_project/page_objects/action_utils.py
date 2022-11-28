@@ -1,3 +1,7 @@
+from os import environ as env
+from dotenv import load_dotenv
+load_dotenv()
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -34,3 +38,8 @@ class ActionUtils():
             EC.alert_is_present()
         )
         return elem
+
+    def load_page(self, url):
+        url = env["UAT_URL"] + url
+
+        self.driver.get(url)

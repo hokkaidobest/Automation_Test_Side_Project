@@ -1,18 +1,21 @@
 import pytest
 import allure
-import logging
 
-from sql_objects.product import Product
-from page_objects.product_page import ProductPage
-from page_objects.member_page import MemberPage
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import logging
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+
 from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
 
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
+from sql_objects.product import Product
+
+from page_objects.product_page import ProductPage
+from page_objects.member_page import MemberPage
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture()
 def main_browser():
@@ -21,7 +24,7 @@ def main_browser():
     driver = webdriver.Chrome(options = options)
     driver.maximize_window()
     driver.get(env['UAT_URL'])
-    LOGGER.info("[PAGE] Enter to product page")
+    LOGGER.info("[PAGE] Enter to main page")
 
     yield driver
     
