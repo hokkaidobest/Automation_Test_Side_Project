@@ -19,10 +19,10 @@ categories = [
 ]
 
 @pytest.mark.parametrize('categories', categories)
-def test_category(main_broswer, categories):
+def test_category(main_browser, categories):
     
     # Get UI procucts id list
-    main_page = MainPage(main_broswer)
+    main_page = MainPage(main_browser)
     main_page.click_category_button(categories["type"])
     ui_product_list = main_page.get_products_id_list_by_category()
 

@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
 
 @pytest.fixture()
-def main_broswer():
+def main_browser():
     options = Options()
     options.chrome_executable_path = env["CHROME_EXECUTABLE_PATH"]
     driver = webdriver.Chrome(options = options)
@@ -36,8 +36,8 @@ def get_product():
     return product
 
 @pytest.fixture()
-def product_broswer(main_broswer, get_product):
-    product_page = ProductPage(main_broswer)
+def product_browser(main_browser, get_product):
+    product_page = ProductPage(main_browser)
     product_page.input_search_text(get_product[1])
     product_page.click_product(get_product[0])
     LOGGER.info("[PAGE] Switch to product page")
