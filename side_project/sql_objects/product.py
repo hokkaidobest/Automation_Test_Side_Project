@@ -28,6 +28,11 @@ class Product(SqlUtils):
     def get_a_product_randomly(self):
         sql = "SELECT id, title FROM product ORDER BY RAND() LIMIT 1;"
         self.cursor.execute(sql)
-        product = self.cursor.fetchone()
-
-        return product
+        
+        # Get selected data
+        row = self.cursor.fetchone()
+        
+        # Get column name
+        desc = self.cursor.description
+        
+        return {desc[0][0]: row[0], desc[1][0]: row[1]}

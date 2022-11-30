@@ -42,13 +42,13 @@ def test_login_and_logout_success(member_browser):
 # Test case 2 : Login Failed with incorrect email or password
 # When member login with incorrect email / password
 # Then login failed with error message
-def test_login_failed(main_browser):
+def test_login_failed(driver):
     LOGGER.info("[START] test_login_and_logout_success")
     
     email = env["UAT_INCORRECT_ACCOUNT"]
     password = env["UAT_INCORRECT_PASSWORD"]
 
-    member_page = MemberPage(main_browser)
+    member_page = MemberPage(driver)
     member_page.click_profile_btn()
     LOGGER.info("[PAGE] Switch to login page")
 

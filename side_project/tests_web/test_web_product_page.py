@@ -2,21 +2,39 @@ import logging
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
 
+import pytest
+
+from sql_objects.product import Product
+from page_objects.product_page import ProductPage
+
+@pytest.fixture()
+def get_product():
+    product_sql = Product()
+    product = product_sql.get_a_product_randomly()
+    LOGGER.info(f"[DB] Profuct info: {product}")
+
+    return product
+
 # Test case 1 : Color Selection 
 # Given entered a product page
 # When select a color of the product
 # Then selected color is highlighted
-def test_color_selection(product_browser):
+def test_color_selection(driver, get_product):
     LOGGER.info("[START] test_color_selection")
     
-    colors = product_browser.get_color()
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
+    colors = product_page.get_color()
     LOGGER.info(f"[UI] Profuct colors: {colors}")
 
     for color in colors:
         color.click()
         LOGGER.info("[ACTION] Click color btn")
 
-        selected_color = product_browser.get_selected_color()
+        selected_color = product_page.get_selected_color()
         selected_color_id = selected_color.get_attribute("data_id")
         selected_color_class = selected_color.get_attribute("class")
         LOGGER.info(f"[UI] Color selected {selected_color_id}, {selected_color_class}")
@@ -29,10 +47,15 @@ def test_color_selection(product_browser):
 # Given entered a product page
 # When select a size of the product
 # Then selected size is highlighted
-def test_size_selection(product_browser):
+def test_size_selection(driver, get_product):
     LOGGER.info("[START] test_size_selection")
 
-    sizes = product_browser.get_size()
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
+    sizes = product_page.get_size()
     LOGGER.info(f"[UI] Product sizes: {sizes}")
 
     for size in sizes:
@@ -50,14 +73,19 @@ def test_size_selection(product_browser):
 # Given entered a product page
 # When edit quantity without size selection
 # Then quantity editor is disabled
-def test_quantity_editor_disabled(product_browser):
+def test_quantity_editor_disabled(driver, get_product):
     LOGGER.info("[START] test_quantity_editor_disabled")
 
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
     # Click add quantity btn once
-    product_browser.click_add_quantity_btn(1)
+    product_page.click_add_quantity_btn(1)
     LOGGER.info("[ACTION] Click add quantity btn once")
 
-    assert product_browser.get_current_quantity_value() == "1"
+    assert product_page.get_current_quantity_value() == "1"
     LOGGER.info("[VERIFICATION] Quantity editor is disabled")
     LOGGER.info("[END] test_size_selection")
 
@@ -68,23 +96,28 @@ def test_quantity_editor_disabled(product_browser):
 # Then quantity should be 9
 # When add 2 more quantity
 # Then quantity still be 9
-def test_increase_quantity(product_browser):
+def test_increase_quantity(driver, get_product):
     LOGGER.info("[START] test_increase_quantity")
 
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
     # Click first size btn of product
-    product_browser.click_size_btn()
+    product_page.click_size_btn()
     LOGGER.info("[ACTION] Click size btn")
 
-    product_browser.click_add_quantity_btn(8)
+    product_page.click_add_quantity_btn(8)
     LOGGER.info("[ACTION] add 8 more quantity")
 
-    assert product_browser.get_current_quantity_value() == "9"
+    assert product_page.get_current_quantity_value() == "9"
     LOGGER.info("[VERIFICATION] Quantity should be 9")
 
-    product_browser.click_add_quantity_btn(2)
+    product_page.click_add_quantity_btn(2)
     LOGGER.info("[ACTION] Add 2 more quantity")
 
-    assert product_browser.get_current_quantity_value() == "9"
+    assert product_page.get_current_quantity_value() == "9"
     LOGGER.info("[VERIFICATION] Quantity still be 9")
     LOGGER.info("[END] test_increase_quantity")
 
@@ -94,20 +127,25 @@ def test_increase_quantity(product_browser):
 # And add 8 more quantity
 # When decrease 8 quantity
 # Then quantity should be 1
-def test_decrease_quantity(product_browser):
+def test_decrease_quantity(driver, get_product):
     LOGGER.info("[START] test_decrease_quantity")
 
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
     # Click first size btn of product
-    product_browser.click_size_btn()
+    product_page.click_size_btn()
     LOGGER.info("[ACTION] Click size btn")
     
-    product_browser.click_add_quantity_btn(8)
+    product_page.click_add_quantity_btn(8)
     LOGGER.info("[ACTION] Click add quantity btn 8 times")
 
-    product_browser.click_minus_quantity_btn(8)
+    product_page.click_minus_quantity_btn(8)
     LOGGER.info("[ACTION] Click minus quantity btn 8 times")
 
-    assert product_browser.get_current_quantity_value() == "1"
+    assert product_page.get_current_quantity_value() == "1"
     LOGGER.info("[VERIFICATION] Quantity should be 1")
     LOGGER.info("[END] test_decrease_quantity")
 
@@ -117,19 +155,24 @@ def test_decrease_quantity(product_browser):
 # When click add to cart button
 # Then success message should be shown
 # And cart icon number should be 1
-def test_add_to_cart_success(product_browser):
+def test_add_to_cart_success(driver, get_product):
     LOGGER.info("[START] test_add_to_cart_success")
 
-    product_browser.click_size_btn()
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
+    product_page.click_size_btn()
     LOGGER.info("[ACTION] Click size btn")
 
-    product_browser.click_add_to_cart_btn()
+    product_page.click_add_to_cart_btn()
     LOGGER.info("[ACTION] Click add to cart btn")
 
-    product_browser.alert_is_present().accept()
+    product_page.alert_is_present().accept()
     LOGGER.info("[UI] Accept alert")
 
-    assert product_browser.get_cart_number() == "1"
+    assert product_page.get_cart_number() == "1"
     LOGGER.info("[VERIFICATION] Cart icon number should be 1")
     LOGGER.info("[END] test_add_to_cart_success")
 
@@ -137,16 +180,21 @@ def test_add_to_cart_success(product_browser):
 # Given entered a product page without size selection
 # When click add to cart button
 # Then alert message should be shown
-def test_add_to_cart_failed(product_browser):
+def test_add_to_cart_failed(driver, get_product):
     LOGGER.info("[START] test_add_to_cart_failed")
 
-    product_browser.click_add_to_cart_btn()
+    product_page = ProductPage(driver)
+    product_page.input_search_text(get_product['title'])
+    product_page.click_product(get_product['id'])
+    LOGGER.info("[PAGE] Switch to product page")
+
+    product_page.click_add_to_cart_btn()
     LOGGER.info("[ACTION] Click add to cart btn")
 
-    assert product_browser.alert_is_present().text == "請選擇尺寸" 
+    assert product_page.alert_is_present().text == "請選擇尺寸" 
     LOGGER.info("[VERIFICATION] Alert message should be shown")
 
-    product_browser.alert_is_present().accept()
+    product_page.alert_is_present().accept()
     LOGGER.info("[ACTION] Accept alert for screenshot")
 
     LOGGER.info("[END] test_add_to_cart_failed")
