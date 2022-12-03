@@ -43,3 +43,9 @@ class ActionUtils():
         url = env["UAT_URL"] + url
 
         self.driver.get(url)
+
+    def switch_to_iframe(self, locater):
+        self.driver.switch_to.frame(locater)
+
+    def switch_back_main_page(self):
+        self.driver.switch_to.default_content()
