@@ -1,27 +1,30 @@
 import pytest
 import allure
-import logging
 
-from sql_objects.product import Product
-from page_objects.product_page import ProductPage
-from page_objects.member_page import MemberPage
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import logging
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+
 from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
 
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
+from page_objects.member_page import MemberPage
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture()
-def main_browser():
+def driver():
     options = Options()
     options.chrome_executable_path = env["CHROME_EXECUTABLE_PATH"]
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920x1080")
     driver = webdriver.Chrome(options = options)
     driver.maximize_window()
     driver.get(env['UAT_URL'])
-    LOGGER.info("[PAGE] Enter to product page")
+    LOGGER.info("[PAGE] Enter to main page")
 
     yield driver
     
@@ -29,28 +32,11 @@ def main_browser():
     driver.quit()
 
 @pytest.fixture()
-def get_product():
-    product_sql = Product()
-    product = product_sql.get_a_product_randomly()
-    LOGGER.info(f"[DB] Profuct info: {product}")
-
-    return product
-
-@pytest.fixture()
-def product_browser(main_browser, get_product):
-    product_page = ProductPage(main_browser)
-    product_page.input_search_text(get_product[1])
-    product_page.click_product(get_product[0])
-    LOGGER.info("[PAGE] Switch to product page")
-
-    return product_page
-
-@pytest.fixture()
-def member_browser(main_browser):
+def member_browser(driver):
     email = env["UAT_ACCOUNT"]
     password = env["UAT_PASSWORD"]
 
-    member_page = MemberPage(main_browser)
+    member_page = MemberPage(driver)
     member_page.click_profile_btn()
     LOGGER.info("[PAGE] Switch to login page")
 

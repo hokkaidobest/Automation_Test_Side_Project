@@ -1,7 +1,3 @@
-from os import environ as env
-from dotenv import load_dotenv
-load_dotenv()
-
 from page_objects.action_utils import *
 from selenium.webdriver.common.by import By
 
@@ -32,8 +28,3 @@ class MemberPage(ActionUtils):
 
     def set_user_jwt_token(self, token):
         self.driver.execute_script(f"localStorage.setItem('jwtToken', '{token}')")
-
-    def load_page(self, url):
-        url = env["UAT_URL"] + url
-
-        self.driver.get(url)

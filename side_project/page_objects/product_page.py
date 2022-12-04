@@ -1,6 +1,11 @@
 from page_objects.action_utils import *
+from sql_objects.color import Color
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+
+import logging
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
 
 class ProductPage(ActionUtils):
     def __init__(self, driver):
@@ -15,6 +20,11 @@ class ProductPage(ActionUtils):
     get_minus_quantity_btn_locator = (By.XPATH, "//div[@class = 'product__quantity-minus']")
     get_add_to_cart_btn_locator = (By.XPATH, "//button[@class = 'product__add-to-cart-button']")
     get_icon_cart_number_locator = (By.XPATH, "//div[@class = 'header__link-icon-cart-number']")
+    get_id_locator = (By.XPATH, "//div[@class = 'product__id']")
+    get_title_locator = (By.XPATH, "//div[@class = 'product__title']")
+    get_price_locator = (By.XPATH, "//div[@class = 'product__price']")
+    get_selected_size_locator = (By.XPATH, "//div[@class = 'product__size product__size--selected']")
+    get_added_quantity_locator = (By.XPATH, "//div[@class = 'product__quantity-value']")
 
     def input_search_text(self, keyword):
         elem = self.find_element()
@@ -55,3 +65,24 @@ class ProductPage(ActionUtils):
 
     def get_cart_number(self):
         return self.find_present_elem(self.get_icon_cart_number_locator).text
+
+    def get_selected_product_info(self):
+        product = {
+            "id": self.find_present_elem(self.get_id_locator).text,
+            "title": self.find_present_elem(self.get_title_locator).text,
+            "color": self.get_color_name_by_code(self.find_present_elem(self.get_selected_color_locator).get_attribute("data_id")[-6:]),
+            "size": self.find_present_elem(self.get_selected_size_locator).text,
+            "quantity": int(self.find_present_elem(self.get_added_quantity_locator).text),
+            "price": int(self.find_present_elem(self.get_price_locator).text.split(".")[1])
+        }
+
+        product["sub_total"] = product["quantity"] * product["price"]
+
+        return product
+
+    def get_color_name_by_code(self, code):
+        color_sql = Color()
+        color_name = color_sql.get_color_name_by_code(code)
+        LOGGER.info(f"[DB] Color info: code: {code}, name: {color_name}")
+
+        return color_name
