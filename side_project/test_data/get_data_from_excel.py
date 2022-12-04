@@ -21,3 +21,31 @@ class GetTestData():
         LOGGER.info(f"[DATA] Orginal checkout with valid value's data: {reader}")
         
         return reader.to_dict("records")
+
+    def get_success_create_product_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "Create Product Success", dtype = str).fillna("").to_dict("records")
+        LOGGER.info(f"[DATA] Orginal success create product data: {reader}")
+
+        reader[1]["Title"] = "J"
+
+        for i in reader:
+            for key in i.keys():
+                if "chars" in i[key]:
+                    i[key] = int(i[key].replace("chars", "")) * "x"
+        
+        LOGGER.info(f"[DATA] Format success create product data: {reader}")          
+
+        return reader
+
+    def get_failed_create_product_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "Create Product Failed", dtype = str).fillna("").to_dict("records")
+        LOGGER.info(f"[DATA] Orginal failed create product data: {reader}")
+
+        for i in reader:
+            for key in i.keys():
+                if "chars" in i[key]:
+                    i[key] = int(i[key].replace("chars", "")) * "x"
+        
+        LOGGER.info(f"[DATA] Format failed create product data: {reader}")
+
+        return reader
