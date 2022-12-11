@@ -9,6 +9,7 @@ load_dotenv()
 
 from api_objects.product_category import ProductCategory
 from api_objects.product_search import ProductSearch
+from api_objects.product_detail import ProductDetail
 from sql_objects.product import Product
 
 base_url = env["UAT_URL"]
@@ -146,11 +147,11 @@ def test_get_product_by_keyword_successfully(session, keyword):
         assert response.status_code == 200
         LOGGER.info("[VERIFICATION] The http status code should be 200")
 
-    with allure.step("Get DB product data via category"):
+    with allure.step("Get DB product data via keyword"):
         product_sql = Product()
         db_result_count = product_sql.get_product_count_with_keyword(keyword)
 
-    with allure.step("Verify API and DB same category count"):
+    with allure.step("Verify API and DB same keyword count"):
         assert api_result_count == db_result_count
         LOGGER.info(f"[DATA] Count of API response: {api_result_count}, count of DB response: {db_result_count}")
         LOGGER.info("[VERIFICATION] The product count of API and DB are same")
@@ -177,7 +178,40 @@ def test_get_product_by_keyword_failed(session, keyword):
         LOGGER.info("[VERIFICATION] The http status code should be 200")
 
     with allure.step("Verify API response is an empty list"):
-        assert len(response.json()["data"]) == 0
+        assert api_result_count == 0
+        LOGGER.info("[VERIFICATION] The API response should be an empty list")
 
     with allure.step("[END] test_get_product_by_keyword_failed"):
+        pass
+
+# Test case 6 : get product detail by id successfully
+# Test API: products/details?id={product_id}
+@pytest.mark.parametrize('id', ["201807201824"])
+def test_get_product_detail_by_id_successfully(session, id):
+
+    with allure.step("[START] test_get_product_detail_by_id_successfully"):
+
+        with allure.step("Send API request"):
+            url = base_url + f"api/1.0/products/details?id={id}"
+            product_api = ProductDetail(session)
+            api_response = product_api.get_product_detail_by_id(url)
+
+    with allure.step("Verify API response status code"):
+        assert api_response.status_code == 200
+        LOGGER.info("[VERIFICATION] The http status code should be 200")
+
+    with allure.step("Verify API response is only one product"):
+        assert len(api_response.json()) == 1
+        LOGGER.info("[VERIFICATION] API response is only one product")
+
+    with allure.step("Get DB product data via id"):
+        product_sql = Product()
+        db_result = product_sql.get_product_by_id(id)
+
+    with allure.step("Verify API and DB data should has same id"):
+        assert api_response.json()["data"]["id"] == db_result["id"]
+        LOGGER.info(f"[DATA] API response product id is: {api_response.json()['data']['id']}, DB selected product id is: {db_result['id']}")
+        LOGGER.info("[VERIFICATION] The product id of API and DB are same")
+
+    with allure.step("[END] test_get_product_detail_by_id_successfully"):
         pass
