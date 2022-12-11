@@ -157,3 +157,27 @@ def test_get_product_by_keyword_successfully(session, keyword):
 
     with allure.step("[END] test_get_product_by_keyword_successfully"):
         pass
+
+# Test case 5 : get search result by keyword failed
+# Test API: products/search?keyword={keyword}&paging={paging}
+@pytest.mark.parametrize('keyword', ["軍裝"])
+def test_get_product_by_keyword_failed(session, keyword):
+
+    with allure.step("[START] test_get_product_by_keyword_failed"):
+        paging = 0
+
+    with allure.step("Send API request"):
+        url = base_url + f"api/1.0/products/search?keyword={keyword}&paging={paging}"
+        product_api = ProductSearch(session)
+        response = product_api.get_product_by_keyword(url)
+        api_result_count = len(response.json()["data"])
+
+    with allure.step("Verify API response status code"):
+        assert response.status_code == 200
+        LOGGER.info("[VERIFICATION] The http status code should be 200")
+
+    with allure.step("Verify API response is an empty list"):
+        assert len(response.json()["data"]) == 0
+
+    with allure.step("[END] test_get_product_by_keyword_failed"):
+        pass
