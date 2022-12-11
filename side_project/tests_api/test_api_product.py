@@ -108,3 +108,27 @@ def test_get_all_product_by_successfully(session, category):
 
     with allure.step("[END] test_get_all_product_by_successfully"):
         pass
+
+# Test case 3：get product by category failed
+# Test API: products/{category}?paging={paging}
+@pytest.mark.parametrize('category', ["fasion"])
+def test_get_product_by_category_failed(session, category):
+    
+    with allure.step("[START] test_get_product_by_category_failed"):
+        paging = 0
+
+    with allure.step("Send API request"):
+        url = base_url + f"api/1.0/products/{category}?paging={paging}"
+        product_api = ProductCategory(session)
+        response = product_api.get_product_by_category(url)
+
+    with allure.step("Verify API response status code"):
+        assert response.status_code == 400
+        LOGGER.info("[VERIFICATION] The http status code should be 200")
+
+    with allure.step("Verify API error message"):
+        assert response.json()["errorMsg"] == "Invalid Category"
+        LOGGER.info("[VERIFICATION] The error message should be shown")
+
+    with allure.step("[END] test_get_product_by_category_failed"):
+        pass
