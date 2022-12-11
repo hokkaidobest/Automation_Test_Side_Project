@@ -8,15 +8,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from api_objects.product_category import ProductCategory
+from api_objects.product_search import ProductSearch
 from sql_objects.product import Product
-from test_data.get_data_from_excel import GetTestData
 
 base_url = env["UAT_URL"]
-
-get_data = GetTestData()
-success_login_data = get_data.get_success_login_data()
-failed_login_data = get_data.get_failed_login_data()
-failed_logout_data = get_data.get_failed_logout_data()
 
 # Test case 1：get product by category successfully
 # Test API: products/{category}?paging={paging}
@@ -131,4 +126,34 @@ def test_get_product_by_category_failed(session, category):
         LOGGER.info("[VERIFICATION] The error message should be shown")
 
     with allure.step("[END] test_get_product_by_category_failed"):
+        pass
+
+# Test case 4 : get search result by keyword successfully
+# Test API: products/search?keyword={keyword}&paging={paging}
+@pytest.mark.parametrize('keyword', ["洋裝", "牛仔褲", "襯衫", "西裝", "包"])
+def test_get_product_by_keyword_successfully(session, keyword):
+
+    with allure.step("[START] test_get_product_by_keyword_successfully"):
+        paging = 0
+
+    with allure.step("Send API request"):
+        url = base_url + f"api/1.0/products/search?keyword={keyword}&paging={paging}"
+        product_api = ProductSearch(session)
+        response = product_api.get_product_by_keyword(url)
+        api_result_count = len(response.json()["data"])
+
+    with allure.step("Verify API response status code"):
+        assert response.status_code == 200
+        LOGGER.info("[VERIFICATION] The http status code should be 200")
+
+    with allure.step("Get DB product data via category"):
+        product_sql = Product()
+        db_result_count = product_sql.get_product_count_with_keyword(keyword)
+
+    with allure.step("Verify API and DB same category count"):
+        assert api_result_count == db_result_count
+        LOGGER.info(f"[DATA] Count of API response: {api_result_count}, count of DB response: {db_result_count}")
+        LOGGER.info("[VERIFICATION] The product count of API and DB are same")
+
+    with allure.step("[END] test_get_product_by_keyword_successfully"):
         pass
