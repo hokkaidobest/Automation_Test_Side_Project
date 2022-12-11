@@ -215,3 +215,26 @@ def test_get_product_detail_by_id_successfully(session, id):
 
     with allure.step("[END] test_get_product_detail_by_id_successfully"):
         pass
+
+# Test case 6 : get product detail by id failed
+# Test API: products/details?id={product_id}
+@pytest.mark.parametrize("id, errorMessage", [("", "Invalid Category"), ("123456", "Invalid Product ID")])
+def test_get_product_detail_by_id_failed(session, id, errorMessage):
+
+    with allure.step("[START] test_get_product_detail_by_id_failed"):
+
+        with allure.step("Send API request"):
+            url = base_url + f"api/1.0/products/details?id={id}"
+            product_api = ProductDetail(session)
+            api_response = product_api.get_product_detail_by_id(url)
+
+    with allure.step("Verify API response status code"):
+        assert api_response.status_code == 400
+        LOGGER.info("[VERIFICATION] The http status code should be 400")
+
+    with allure.step("Verify API response error message"):
+        assert api_response.json()["errorMsg"] == errorMessage
+        LOGGER.info("[VERIFICATION] API resonse message")
+
+    with allure.step("[END] test_get_product_detail_by_id_failed"):
+        pass
