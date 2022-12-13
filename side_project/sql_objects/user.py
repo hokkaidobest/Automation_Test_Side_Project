@@ -13,17 +13,15 @@ class User(SqlUtils):
         self.cursor.execute(sql)
         token = self.cursor.fetchone()
         LOGGER.info(f"[DATA] SQL result: {token}")
-
-        return token[0]
+        
+        return token
 
     def get_user_info_by_id(self, id):
         sql = f"SELECT provider, name, email, picture FROM user WHERE id = '{id}';"
         LOGGER.info(f"[DATA] SQL syntax: {sql}")
 
         self.cursor.execute(sql)
-        data = self.cursor.fetchone()
-        desc = self.cursor.description
-        result = {desc[0][0]: data[0], desc[1][0]: data[1], desc[2][0]: data[2], desc[3][0]: data[3]}
-        LOGGER.info(f"[DATA] SQL result: {result}")
+        row = self.cursor.fetchone()
+        LOGGER.info(f"[DATA] SQL result: {row}")
 
-        return result
+        return row

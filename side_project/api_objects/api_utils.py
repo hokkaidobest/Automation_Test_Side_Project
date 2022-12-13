@@ -9,7 +9,7 @@ class ApiUtils():
         self.basic_url = "http://54.201.140.239/api/1.0/"
         self.session = session
 
-    def get_resuest(self, url, headers = None, body = None):
+    def get_request(self, url, headers = None, body = None):
         LOGGER.info("[ACTION] Do GET request")
         LOGGER.info(f"[DATA] Request url: {url}")
         LOGGER.info(f"[DATA] Request header: {headers}")
@@ -22,7 +22,7 @@ class ApiUtils():
 
         return response
 
-    def post_resuest(self, url, headers = None, body = None):
+    def post_request(self, url, headers = None, body = None):
         LOGGER.info("[ACTION] Do POST request")
         LOGGER.info(f"[DATA] Request url: {url}")
         LOGGER.info(f"[DATA] Request header: {headers}")

@@ -37,7 +37,7 @@ def test_success_login(session, success_login_data):
 
     user_sql = User()
     db_token = user_sql.get_user_token_by_email(success_login_data["email"])
-    assert db_token == response.json()["data"]["access_token"]
+    assert db_token["access_token"] == response.json()["data"]["access_token"]
     LOGGER.info("[VERIFICATION] The token from API response and DB.user.access_token suold be same")
 
     LOGGER.info("[END] test_success_login")
@@ -82,12 +82,12 @@ def test_success_logout(session, success_login_data):
 
     user_sql = User()
     db_token = user_sql.get_user_token_by_email(success_login_data["email"])
-    assert db_token == ""
+    assert db_token["access_token"] == ""
     LOGGER.info("[VERIFICATION] The token should be empty in the user table")
 
     LOGGER.info("[END] test_success_logout")
 
-# Test case 4 : logout success
+# Test case 4 : logout failed
 # Test API: user/logout
 @pytest.mark.parametrize('failed_logout_data', failed_logout_data)
 def test_failed_logout(session, failed_logout_data):
@@ -125,12 +125,6 @@ def test_get_profile_success(session, success_login_data):
 
     assert profile_response.status_code == 200
     LOGGER.info("[VERIFICATION] The http status code should be 200")
-
-    assert profile_response.json()["data"]["email"] == login_response.json()["data"]["user"]["email"]
-    assert profile_response.json()["data"]["name"] == login_response.json()["data"]["user"]["name"]
-    assert profile_response.json()["data"]["provider"] == login_response.json()["data"]["user"]["provider"]
-    assert profile_response.json()["data"]["picture"] == login_response.json()["data"]["user"]["picture"]
-    LOGGER.info("[VERIFICATION] The profile response data should be same to login response data")
 
     user_sql = User()
     db_data = user_sql.get_user_info_by_id(login_response.json()["data"]["user"]["id"])
