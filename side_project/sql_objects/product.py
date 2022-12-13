@@ -9,8 +9,8 @@ class Product(SqlUtils):
         sql = f"SELECT COUNT(*) FROM product WHERE title LIKE '%{keyword}%';"
         self.cursor.execute(sql)
         records = self.cursor.fetchone()
-        
-        return records[0]
+
+        return records
 
     def get_products_count_with_empty_keyword(self):
         sql = "SELECT COUNT(*) FROM product;"
@@ -50,50 +50,16 @@ class Product(SqlUtils):
         LOGGER.info(f"[DATA] SQL syntax is: {sql}")
 
         self.cursor.execute(sql)
-        # Get selected data
         rows = self.cursor.fetchall()
-        # Get column name
-        desc = self.cursor.description
+        LOGGER.info(f"[DATA] SQL result: {rows}")
         
-        result = []
-        for row in rows:
-            result.append({
-                desc[0][0]: row[0], # id
-                desc[1][0]: row[1], # category
-                desc[2][0]: row[2], # title
-                desc[3][0]: row[3], # description
-                desc[4][0]: row[4], # price
-                desc[5][0]: row[5], # texture
-                desc[6][0]: row[6], # wash
-                desc[7][0]: row[7], # palce
-                desc[8][0]: row[8], # note
-                desc[9][0]: row[9], # story
-                desc[10][0]: row[10] # main_page
-            })
-        LOGGER.info(f"[DATA] SQL result: {result}")
-        
-        return result
+        return rows
 
     def get_product_by_id(self, id):
         sql = f"SELECT * FROM product WHERE id = '{id}';"
         self.cursor.execute(sql)
         
-        # Get selected data
         row = self.cursor.fetchone()
-        
-        # Get column name
-        desc = self.cursor.description
-        
-        return {
-                desc[0][0]: row[0], # id
-                desc[1][0]: row[1], # category
-                desc[2][0]: row[2], # title
-                desc[3][0]: row[3], # description
-                desc[4][0]: row[4], # price
-                desc[5][0]: row[5], # texture
-                desc[6][0]: row[6], # wash
-                desc[7][0]: row[7], # palce
-                desc[8][0]: row[8], # note
-                desc[9][0]: row[9], # story
-                desc[10][0]: row[10] # main_page
-        }
+        LOGGER.info(f"[DATA] SQL result: {row}")
+
+        return row

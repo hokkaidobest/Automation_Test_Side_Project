@@ -152,7 +152,7 @@ def test_get_product_by_keyword_successfully(session, keyword):
         db_result_count = product_sql.get_product_count_with_keyword(keyword)
 
     with allure.step("Verify API and DB same keyword count"):
-        assert api_result_count == db_result_count
+        assert api_result_count == db_result_count["COUNT(*)"]
         LOGGER.info(f"[DATA] Count of API response: {api_result_count}, count of DB response: {db_result_count}")
         LOGGER.info("[VERIFICATION] The product count of API and DB are same")
 
@@ -216,7 +216,7 @@ def test_get_product_detail_by_id_successfully(session, id):
     with allure.step("[END] test_get_product_detail_by_id_successfully"):
         pass
 
-# Test case 6 : get product detail by id failed
+# Test case 7 : get product detail by id failed
 # Test API: products/details?id={product_id}
 @pytest.mark.parametrize("id, errorMessage", [("", "Invalid Category"), ("123456", "Invalid Product ID")])
 def test_get_product_detail_by_id_failed(session, id, errorMessage):
