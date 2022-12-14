@@ -14,8 +14,6 @@ from api_objects.profile import Profile
 from sql_objects.user import User
 from test_data.get_data_from_excel import GetTestData
 
-base_url = env["UAT_URL"]
-
 get_data = GetTestData()
 success_login_data = get_data.get_success_login_data()
 failed_login_data = get_data.get_failed_login_data()
@@ -28,9 +26,8 @@ def test_success_login(session, success_login_data):
 
     LOGGER.info("[START] test_success_login")
 
-    url = base_url + "api/1.0/user/login"
     login_api = Login(session)
-    response = login_api.login(url, success_login_data)
+    response = login_api.login(success_login_data)
 
     assert response.status_code == int(success_login_data["Http Status Code"])
     LOGGER.info("[VERIFICATION] The http status code should be 200")
@@ -49,9 +46,8 @@ def test_failed_login(session, failed_login_data):
 
     LOGGER.info("[START] test_failed_login")
 
-    url = base_url + "api/1.0/user/login"
     login_api = Login(session)
-    response = login_api.login(url, failed_login_data)
+    response = login_api.login(failed_login_data)
 
     assert response.status_code == int(failed_login_data["Http Status Code"])
     LOGGER.info("[VERIFICATION] The http status code should be 400")
@@ -68,14 +64,12 @@ def test_success_logout(session, success_login_data):
     
     LOGGER.info("[START] test_success_logout")
 
-    login_url = base_url + "api/1.0/user/login"
     login_api = Login(session)
-    response = login_api.login(login_url, success_login_data)
+    response = login_api.login(success_login_data)
 
-    logout_url = base_url + "api/1.0/user/logout"
     logout_api = Logout(session)
     header = {'authorization': f"Bearer {response.json()['data']['access_token']}"}
-    response = logout_api.logout(logout_url, header)
+    response = logout_api.logout(header)
 
     assert response.status_code == 200
     LOGGER.info("[VERIFICATION] The http status code should be 200")
@@ -94,10 +88,9 @@ def test_failed_logout(session, failed_logout_data):
     
     LOGGER.info("[START] test_failed_logout")
 
-    logout_url = base_url + "api/1.0/user/logout"
     logout_api = Logout(session)
     header = {'authorization': f"{failed_logout_data['Token']}"}
-    response = logout_api.logout(logout_url, header)
+    response = logout_api.logout(header)
 
     assert response.status_code == int(failed_logout_data["Http Status Code"])
     LOGGER.info("[VERIFICATION] The http status code should be 401 or 403")
@@ -114,14 +107,12 @@ def test_get_profile_success(session, success_login_data):
     
     LOGGER.info("[START] test_get_profile_success")
 
-    login_url = base_url + "api/1.0/user/login"
     login_api = Login(session)
-    login_response = login_api.login(login_url, success_login_data)
+    login_response = login_api.login(success_login_data)
 
-    profile_url = base_url + "api/1.0/user/profile"
     logout_api = Profile(session)
     header = {'authorization': f"Bearer {login_response.json()['data']['access_token']}"}
-    profile_response = logout_api.get_profile(profile_url, header)
+    profile_response = logout_api.get_profile(header)
 
     assert profile_response.status_code == 200
     LOGGER.info("[VERIFICATION] The http status code should be 200")
@@ -143,10 +134,9 @@ def test_get_profile_failed(session, failed_logout_data):
     
     LOGGER.info("[START] test_get_profile_failed")
 
-    logout_url = base_url + "api/1.0/user/profile"
     logout_api = Profile(session)
     header = {'authorization': f"{failed_logout_data['Token']}"}
-    response = logout_api.get_profile(logout_url, header)
+    response = logout_api.get_profile(header)
 
     assert response.status_code == int(failed_logout_data["Http Status Code"])
     LOGGER.info("[VERIFICATION] The http status code should be 401 or 403")
