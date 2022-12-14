@@ -6,35 +6,24 @@ from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
 
-import requests
+from requests import Request
 
 class ApiUtils():
     def __init__(self, session):
         self.basic_url = env["UAT_URL"]
         self.session = session
 
-    def get_request(self, url, headers = None, body = None):
-        LOGGER.info("[ACTION] Do GET request")
+    def send_request(self, method, url, headers = None, body = None):
+        LOGGER.info(f"[ACTION] Do {method} request")
         LOGGER.info(f"[DATA] Request url: {url}")
         LOGGER.info(f"[DATA] Request header: {headers}")
         LOGGER.info(f"[DATA] Request body: {body}")
 
         try:
-            response = self.session.get(url, headers = headers, json = body)
-        except requests.exceptions.HTTPError as e:
-            print(e)
-
-        return response
-
-    def post_request(self, url, headers = None, body = None):
-        LOGGER.info("[ACTION] Do POST request")
-        LOGGER.info(f"[DATA] Request url: {url}")
-        LOGGER.info(f"[DATA] Request header: {headers}")
-        LOGGER.info(f"[DATA] Request body: {body}")
-
-        try:
-            response = self.session.post(url, headers = headers, json = body)
-        except requests.exceptions.HTTPError as e:
+            req = Request(method, url, headers = headers, json = body)
+            prepped = req.prepare()
+            response = self.session.send(prepped)
+        except Request.exceptions.HTTPError as e:
             print(e)
 
         return response

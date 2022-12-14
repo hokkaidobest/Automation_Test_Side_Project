@@ -6,7 +6,7 @@ class Profile(ApiUtils):
 
     def get_profile(self,header):
         url = self.basic_url + "api/1.0/user/profile"
-        response = self.get_request(url, headers = header)
+        response = self.send_request("GET", url, headers = header)
         LOGGER.info(f"[TEST] API response: {response.json()}, code: {response.status_code}")
 
         return response

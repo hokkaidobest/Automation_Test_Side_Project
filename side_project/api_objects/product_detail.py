@@ -6,7 +6,7 @@ class ProductDetail(ApiUtils):
 
     def get_product_detail_by_id(self, id):
         url = self.basic_url + f"api/1.0/products/details?id={id}"
-        response = self.get_request(url)
+        response = self.send_request("GET", url)
         LOGGER.info(f"[TEST] API response: {response.json()}, code: {response.status_code}")
 
         return response
