@@ -6,7 +6,7 @@ from os import environ as env
 from dotenv import load_dotenv
 load_dotenv()
 
-from requests import Request
+import requests
 
 class ApiUtils():
     def __init__(self, session):
@@ -20,10 +20,8 @@ class ApiUtils():
         LOGGER.info(f"[DATA] Request body: {body}")
 
         try:
-            req = Request(method, url, headers = headers, json = body)
-            prepped = req.prepare()
-            response = self.session.send(prepped)
-        except Request.exceptions.HTTPError as e:
+            response = self.session.request(method, url, headers = headers, json = body)
+        except requests.exceptions.HTTPError as e:
             print(e)
 
         return response
