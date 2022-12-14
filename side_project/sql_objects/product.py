@@ -1,3 +1,7 @@
+import logging
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+
 from sql_objects.sql_utils import *
 
 class Product(SqlUtils):
@@ -5,8 +9,8 @@ class Product(SqlUtils):
         sql = f"SELECT COUNT(*) FROM product WHERE title LIKE '%{keyword}%';"
         self.cursor.execute(sql)
         records = self.cursor.fetchone()
-        
-        return records[0]
+
+        return records
 
     def get_products_count_with_empty_keyword(self):
         sql = "SELECT COUNT(*) FROM product;"
@@ -36,3 +40,26 @@ class Product(SqlUtils):
         desc = self.cursor.description
         
         return {desc[0][0]: row[0], desc[1][0]: row[1]}
+
+    def get_product_by_category(self, category):
+        
+        if category == "all":
+            sql = "SELECT * FROM product;"
+        else:
+            sql = f"SELECT * FROM product WHERE category = '{category}';"
+        LOGGER.info(f"[DATA] SQL syntax is: {sql}")
+
+        self.cursor.execute(sql)
+        rows = self.cursor.fetchall()
+        LOGGER.info(f"[DATA] SQL result: {rows}")
+        
+        return rows
+
+    def get_product_by_id(self, id):
+        sql = f"SELECT * FROM product WHERE id = '{id}';"
+        self.cursor.execute(sql)
+        
+        row = self.cursor.fetchone()
+        LOGGER.info(f"[DATA] SQL result: {row}")
+
+        return row
