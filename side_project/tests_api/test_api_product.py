@@ -12,8 +12,6 @@ from api_objects.product_search import ProductSearch
 from api_objects.product_detail import ProductDetail
 from sql_objects.product import Product
 
-base_url = env["UAT_URL"]
-
 # Test case 1：get product by category successfully
 # Test API: products/{category}?paging={paging}
 @pytest.mark.parametrize('category', ["men", "women", "accessories"])
@@ -26,9 +24,8 @@ def test_get_product_by_category_successfully(session, category):
     while True:
         
         with allure.step("Send API request"):
-            url = base_url + f"api/1.0/products/{category}?paging={paging}"
             product_api = ProductCategory(session)
-            response = product_api.get_product_by_category(url)
+            response = product_api.get_product_by_category(category, paging)
 
         with allure.step("Verify API response status code"):
             assert response.status_code == 200
@@ -74,9 +71,8 @@ def test_get_all_product_by_successfully(session, category):
     while True:
         
         with allure.step("Send API request"):
-            url = base_url + f"api/1.0/products/{category}?paging={paging}"
             product_api = ProductCategory(session)
-            response = product_api.get_product_by_category(url)
+            response = product_api.get_product_by_category(category, paging)
 
         with allure.step("Verify API response status code"):
             assert response.status_code == 200
@@ -114,9 +110,8 @@ def test_get_product_by_category_failed(session, category):
         paging = 0
 
     with allure.step("Send API request"):
-        url = base_url + f"api/1.0/products/{category}?paging={paging}"
         product_api = ProductCategory(session)
-        response = product_api.get_product_by_category(url)
+        response = product_api.get_product_by_category(category, paging)
 
     with allure.step("Verify API response status code"):
         assert response.status_code == 400
@@ -138,9 +133,8 @@ def test_get_product_by_keyword_successfully(session, keyword):
         paging = 0
 
     with allure.step("Send API request"):
-        url = base_url + f"api/1.0/products/search?keyword={keyword}&paging={paging}"
         product_api = ProductSearch(session)
-        response = product_api.get_product_by_keyword(url)
+        response = product_api.get_product_by_keyword(keyword, paging)
         api_result_count = len(response.json()["data"])
 
     with allure.step("Verify API response status code"):
@@ -168,9 +162,8 @@ def test_get_product_by_keyword_failed(session, keyword):
         paging = 0
 
     with allure.step("Send API request"):
-        url = base_url + f"api/1.0/products/search?keyword={keyword}&paging={paging}"
         product_api = ProductSearch(session)
-        response = product_api.get_product_by_keyword(url)
+        response = product_api.get_product_by_keyword(keyword, paging)
         api_result_count = len(response.json()["data"])
 
     with allure.step("Verify API response status code"):
@@ -192,9 +185,8 @@ def test_get_product_detail_by_id_successfully(session, id):
     with allure.step("[START] test_get_product_detail_by_id_successfully"):
 
         with allure.step("Send API request"):
-            url = base_url + f"api/1.0/products/details?id={id}"
             product_api = ProductDetail(session)
-            api_response = product_api.get_product_detail_by_id(url)
+            api_response = product_api.get_product_detail_by_id(id)
 
     with allure.step("Verify API response status code"):
         assert api_response.status_code == 200
@@ -224,9 +216,8 @@ def test_get_product_detail_by_id_failed(session, id, errorMessage):
     with allure.step("[START] test_get_product_detail_by_id_failed"):
 
         with allure.step("Send API request"):
-            url = base_url + f"api/1.0/products/details?id={id}"
             product_api = ProductDetail(session)
-            api_response = product_api.get_product_detail_by_id(url)
+            api_response = product_api.get_product_detail_by_id(id)
 
     with allure.step("Verify API response status code"):
         assert api_response.status_code == 400
