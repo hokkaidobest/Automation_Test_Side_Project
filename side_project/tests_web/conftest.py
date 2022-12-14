@@ -13,6 +13,8 @@ from page_objects.member_page import MemberPage
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 @pytest.fixture()
 def driver():
@@ -21,7 +23,8 @@ def driver():
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920x1080")
-    driver = webdriver.Chrome(options = options)
+    service = Service(executable_path = ChromeDriverManager().install())
+    driver = webdriver.Chrome(service = service, options = options)
     driver.maximize_window()
     driver.get(env['UAT_URL'])
     LOGGER.info("[PAGE] Enter to main page")

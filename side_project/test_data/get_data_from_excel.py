@@ -49,3 +49,27 @@ class GetTestData():
         LOGGER.info(f"[DATA] Format failed create product data: {reader}")
 
         return reader
+
+    def get_success_login_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "API Login Success", dtype = str).to_dict("records")
+        LOGGER.info(f"[DATA] Orginal success login data: {reader}")
+
+        return reader
+
+    def get_failed_login_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "API Login Failed", dtype = str).fillna("").to_dict("records")
+        LOGGER.info(f"[DATA] Orginal failed login data: {reader}")
+
+        for i in reader:
+            for key in i.keys():
+                if "chars" in i[key]:
+                    i[key] = int(i[key].replace("chars", "")) * "x"
+        LOGGER.info(f"[DATA] Format failed login data: {reader}")
+
+        return reader
+
+    def get_failed_logout_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "API Logout Failed", dtype = str).fillna("").to_dict("records")
+        LOGGER.info(f"[DATA] Orginal failed logout data: {reader}")
+
+        return reader

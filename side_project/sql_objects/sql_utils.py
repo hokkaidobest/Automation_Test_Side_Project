@@ -13,4 +13,4 @@ class SqlUtils():
             password = env["DB_UAT_PASSWORD"],
             buffered = True
         )
-        self.cursor = self.connection.cursor()
+        self.cursor = self.connection.cursor(dictionary = True)
