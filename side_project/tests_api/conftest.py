@@ -19,7 +19,7 @@ def session():
     session.close()
 
 @pytest.fixture()
-def user_header(session):
+def user_token(session):
     
     with allure.step("[START] user login"):
         login_data = {

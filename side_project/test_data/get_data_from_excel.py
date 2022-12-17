@@ -73,3 +73,15 @@ class GetTestData():
         LOGGER.info(f"[DATA] Orginal failed logout data: {reader}")
 
         return reader
+
+    def get_invalid_api_checkout_data(self):
+        reader = pd.read_excel("test_data/Stylish-Test Case.xlsx", "API Checkout with Invalid Value", dtype = str).fillna("").to_dict("records")
+        LOGGER.info(f"[DATA] Orginal failed login data: {reader}")
+
+        for i in reader:
+            for key in i.keys():
+                if "chars" in i[key]:
+                    i[key] = int(i[key].replace("chars", "")) * "x"
+        LOGGER.info(f"[DATA] Format failed login data: {reader}")
+
+        return reader
