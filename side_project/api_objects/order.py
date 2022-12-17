@@ -13,7 +13,7 @@ class Order(ApiUtils):
         return response
 
     def get_checkout_data(self, prime, receiver, product, product_count):
-        if product_count is not 0:
+        if product_count != 0:
             list = [{
                   "id": product["id"],
                   "name": product["name"],
