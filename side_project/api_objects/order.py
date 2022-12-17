@@ -65,3 +65,10 @@ class Order(ApiUtils):
         LOGGER.info(f"[DATA] Receiver data: {receiver}")
 
         return receiver
+
+    def get_order(self, number, header):
+        url = self.basic_url + f"api/1.0/order/{number}"
+        response = self.send_request("GET", url, headers = header)
+        LOGGER.info(f"[TEST] API response: {response.json()}, code: {response.status_code}")
+
+        return response
