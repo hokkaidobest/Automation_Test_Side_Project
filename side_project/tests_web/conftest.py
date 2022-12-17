@@ -58,7 +58,7 @@ def member_browser(driver):
     return member_page
 
 @pytest.fixture()
-def get_prime(driver):
+def checkout_prime(driver):
     number = env["UAT_TEST_CARD_NUMBER"]
     expiration = env["UAT_TEST_EXPIRATION_DATE"]
     cvc = env["UAT_TEST_CVC_NUMBER"]

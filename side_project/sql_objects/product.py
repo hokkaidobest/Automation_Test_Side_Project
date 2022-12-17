@@ -63,3 +63,21 @@ class Product(SqlUtils):
         LOGGER.info(f"[DATA] SQL result: {row}")
 
         return row
+
+    def get_product_for_checkout(self):
+        
+        product = {
+            "id": 201807201824,
+            "name": "前開衩扭結洋裝",
+            "qty": 1,
+            "price": 799,
+            "size": "S",
+            "image": "http://54.201.140.239/assets/201807201824/0.jpg",
+            "color": {
+              "code": "FFFFFF",
+              "name": "白色"
+            }
+        }
+        LOGGER.info(f"[DATA] product: {product}")
+        
+        return product

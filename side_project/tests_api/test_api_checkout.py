@@ -1,11 +1,11 @@
-import logging, pytest
+import logging
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
 
 from tests_web.conftest import *
 from api_objects.order import Order
 from sql_objects.product import Product
-from sql_objects.order import Order
+# from sql_objects.order import Order
 
 # from test_data.get_data_from_excel import GetTestData
 # get_data = GetTestData()
@@ -15,33 +15,34 @@ from sql_objects.order import Order
 
 @allure.title("Test case 1: checkout successfully")
 @allure.description("API: /order")
-@pytest.mark.usefixtures("get_prime")
-def test_success_checkout(session, get_prime):
+def test_success_checkout(session, user_header, checkout_prime):
 
     with allure.step("[START] test_success_checkout"):
         LOGGER.info("[START] test_success_checkout")
 
     with allure.step("[ACTION] Get prime from web from page"):
-        LOGGER.info(f"[DATA] prime: {get_prime}")
+        LOGGER.info(f"[DATA] prime: {checkout_prime}")
 
     with allure.step("[ACTION] Get product info from Database"):
         product_sql = Product()
-        product = product_sql.get_checkout_product() # 這邊要組的準備要送出的 list 內一樣
-        LOGGER.info(f"[DATA] product: {product}")
+        product = product_sql.get_product_for_checkout()
 
     with allure.step("[ACTION] Init the Order API object"):
         order_api = Order(session)
 
+    with allure.step("[ACTION] Get receiver data"):
+        receiver = order_api.get_receiver_data()
+
     with allure.step("[ACTION] Call order API to create an order"):
-        api_order_res = order_api.create_order(get_prime, product) # 組 request 打 post 出去
+        api_order_res = order_api.create_order(checkout_prime, receiver, product, user_header)
+
+    with allure.step("[VALIDATION] validate the API response code"):
         assert api_order_res.status_code == 200
         LOGGER.info("[VALIDATION] Create order API should responsed status code 200")
 
-    with allure.step("[ACTION] Verify order data via database"):
-        order_sql = Order() 
-        sql_order_res = order_sql.get_order_info(api_order_res.json()["id"]) # 根據 API response id 去 DB 撈
-        assert api_order_res == sql_order_res # 嘿嘿，看這邊要怎麼比對了... 理想上應該是全部比對，因為這邊不會關聯太多
-        LOGGER.info("[VALIDATION] The order data from API response and databse should be same")
+    with allure.step("[VALIDATION] validate the API response data"):
+        assert api_order_res.json()["data"]["number"] is not None
+        LOGGER.info("[VALIDATION] Create order API should responsed order id")
 
     with allure.step("[END] test_success_checkout"):
         LOGGER.info("[END] test_success_checkout")
