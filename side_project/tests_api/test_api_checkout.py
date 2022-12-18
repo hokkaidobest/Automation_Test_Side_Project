@@ -158,8 +158,8 @@ def test_failed_checkout_with_invalied_prime(session, user_token, checkout_prime
         assert api_order_res.json()["errorMsg"] == error_message
         LOGGER.info(f"[VALIDATION] Create order API should responsed: {error_message}")
 
-    with allure.step("[END] test_failed_checkout_with_invalied_prime"):
-        LOGGER.info("[END] test_failed_checkout_with_invalied_prime")
+    with allure.step("[END] test_failed_checkout_with_invalid_prime"):
+        LOGGER.info("[END] test_failed_checkout_with_invalid_prime")
 
 @allure.title("Test case 5: get order successfully")
 @allure.description("API: /order/order_id")
