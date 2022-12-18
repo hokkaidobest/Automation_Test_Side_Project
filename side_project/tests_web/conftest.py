@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from page_objects.member_page import MemberPage
+from page_objects.prime_page import PrimePage
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -55,3 +56,21 @@ def member_browser(driver):
     LOGGER.info("[ACTION] Click confirm btn")
 
     return member_page
+
+@pytest.fixture()
+def checkout_prime(driver):
+    number = env["UAT_TEST_CARD_NUMBER"]
+    expiration = env["UAT_TEST_EXPIRATION_DATE"]
+    cvc = env["UAT_TEST_CVC_NUMBER"]
+    LOGGER.info(f"[Data] checkout paymeny data card nubmer: {number}, expire date: {expiration}, cvc {cvc}")
+
+    prime_page = PrimePage(driver)
+    prime_page.load_page("get_prime.html")
+    LOGGER.info("[PAGE] Switch to get prime page")
+    prime_page.get_prime(number, expiration, cvc)
+    
+    prime = prime_page.alert_is_present().text
+    prime_page.alert_is_present().accept()
+    LOGGER.info(f"[Data] prime data: {prime}")
+
+    return prime

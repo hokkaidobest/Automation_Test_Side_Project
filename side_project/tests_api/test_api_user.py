@@ -1,12 +1,6 @@
-import logging
+import logging, pytest
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
-
-from os import environ as env
-from dotenv import load_dotenv
-load_dotenv()
-
-import pytest
 
 from api_objects.login import Login
 from api_objects.logout import Logout
